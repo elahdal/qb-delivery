@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sen:wght@400..800&display=swap');
+
 .deliveryOption-1{
   /* Rectangle 13 */
 
@@ -113,21 +115,182 @@ border-radius: 20px;
 }
 
 .textholder{
-    /* Forem ipsum dolor sit amet, consectetur adipis cing elit. Nunc vulputate libero et velit interduı aliquet odio matti consectetur adipis. */
+ /* Forem ipsum dolor sit amet, consectetur adipis cing elit. Nunc vulputate libero et velit interduı aliquet odio matti consectetur adipis. */
 
-/* position: absolute;
+position: absolute;
 width: 199px;
-height: 21px;
-font-family: "Sen";
-font-weight: 700;
-font-size: 7px;
-line-height: 7px;*/
-color: rgba(177, 44, 44, 0.32); 
-@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
-font-family: 'Sen', sans-serif;
+height: auto;
+margin-top: -6px;
+margin-left: 14px;
 
+font-family: 'Sentic';
+font-style: normal;
+font-weight: 70;
+font-size: 9px;
+line-height: 10px;
+color: rgba(255, 255, 255, 0.32);
+font-family: 'Sen', sans-serif;
+}
+
+.quantity{ 
+/* Group 32 */
+position: absolute;
+width: 70px;
+height: 22px;
+margin-top: 32px;
+margin-left: 14px;
+
+background: rgba(255, 255, 255, 0.12);
+border-radius: 1px;
+}
+
+.box{
+    margin-top: 3px;
+    margin-left: 7px;
+    width: 17px;
+}
+
+.quant{
+margin-top: -18.5px;
+margin-left: 33px;
+
+font-family: 'Sen', sans-serif;
+font-weight: 100;
+font-size: 14px;
+line-height: 12px;
+color: #FFFFFF;
+}
+
+.MoneyEarned{
+    position: absolute;
+    width: 70px;
+    height: 22px;
+    margin-top: 32px;
+    margin-left: 90px;
+    
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 1px;
+}
+
+.MoneyEarnedLogo{
+    margin-top: 3px;
+    margin-left: 7px;
+    width: 15px;
+}
+
+.MoneyEarnedText{
+margin-top: -17px;
+margin-left: 30px;
+font-family: 'Sen';
+font-weight: 100;
+font-size: 13px;
+line-height: 12px;
+color: #FFFFFF;
+}
+
+.MoneyEarnedTextk{
+    margin-top: -25px;
+    margin-left: 53px;
+    font-family: 'Sen';
+    font-weight: 100;
+    font-size: 13px;
+    line-height: 12px;
+    color: #cccaca;
+}
+
+
+
+
+.PlayerReq{ position: absolute;
+    width: 40px;
+    height: 22px;
+    margin-top: 32px;
+    margin-left: 166px;
+    
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 1px;
+}
+
+.PlayerReqLogo{
+    margin-top: 3px;
+    margin-left: 5px;
+    width: 15px;
+}
+
+.PlayerReqText{
+    margin-top: -17px;
+    margin-left: 25px;
+    font-family: 'Sen';
+    font-weight: 100;
+    font-size: 13px;
+    line-height: 12px;
+    color: #FFFFFF;
+}
+
+.missionText{    
+    box-sizing: border-box;
+    width: 223px;
+    height: 80px;
+    margin-left: 6px;
+    margin-top: 5px;
+
+    background: rgba(0, 0, 0, 0.13);
+    border-radius: 5px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.textholderMission{
+    position: absolute;
+    width: 199px;
+    height: auto;
+    margin-top: 7px;
+    margin-left: 14px;
+    
+    font-family: 'Sentic';
+    font-style: normal;
+    font-weight: 70;
+    font-size: 9px;
+    line-height: 10px;
+    color: rgba(255, 255, 255, 0.32);
+    font-family: 'Sen', sans-serif;
+}
+
+.ButtonSelect{
+box-sizing: border-box;
+position: absolute;
+width: 220px;
+height: 31px;
+margin-top: 6px;
+margin-left: 7px;
+
+background: rgba(255, 255, 255, 0.54);
+border: 2px solid rgba(255, 255, 255, 0.5);
+border-radius: 5px;
+
+/* Select */
+
+font-family: 'Sen';
+font-style: normal;
+font-size: 13px;
+line-height: 12px;
+color: #FFFFFF;
 
 }
+
+.ButtonSelect:hover{
+    background: rgba(255, 255, 255, 0.54);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    color: #757575;
+}
+
+
+
+
+
+
+
 
 
 
