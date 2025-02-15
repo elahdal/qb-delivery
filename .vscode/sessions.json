@@ -1,0 +1,80 @@
+{
+    "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v10/terminal-keeper.json",
+    "theme": "chaos",
+    "active": "FiveM Dev",
+    "activateOnStartup": true,
+    "keepExistingTerminals": false,
+    "sessions": {
+        "default": [
+            {
+                "name": "hello",
+                "autoExecuteCommands": true,
+                "icon": "person",
+                "color": "terminal.ansiGreen",
+                "commands": [
+                    "echo hello"
+                ]
+            },
+            [
+                {
+                    "name": "docker:ros",
+                    "commands": [
+                        ""
+                    ]
+                },
+                {
+                    "name": "docker:k8s",
+                    "commands": [
+                        ""
+                    ]
+                }
+            ],
+            [
+                {
+                    "name": "docker:nats",
+                    "commands": [
+                        ""
+                    ]
+                },
+                {
+                    "name": "docker:fleet",
+                    "commands": [
+                        ""
+                    ]
+                }
+            ]
+        ],
+        "FiveM Dev": [
+            {
+                "name": "CFX Server",
+                "cwd": "C:\\Users\\elahd\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_945DE8.base\\resources\\[qb]\\qb-delivery\\web",
+                "commands": [
+                    "C:\\Users\\elahd\\OneDrive\\Documents\\Code\\FiveM\\Artifacts\\FXServer.exe + exec"
+                ]
+            },
+            [
+                {
+                    "name": "web",
+                    "cwd": "C:\\Users\\elahd\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_945DE8.base\\resources\\[qb]\\qb-delivery\\web",
+                    "commands": [
+                        "cd C:\\Users\\elahd\\OneDrive\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_AA4D39.base\\resources\\``[qb``]\\qb-delivery\\web"
+                    ]
+                },
+                {
+                    "name": "web deploy",
+                    "cwd": "C:\\Users\\elahd\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_945DE8.base\\resources\\[qb]\\qb-delivery\\web",
+                    "commands": [
+                        "cd C:\\Users\\elahd\\OneDrive\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_AA4D39.base\\resources\\``[qb``]\\qb-delivery\\web"
+                    ]
+                }
+            ],
+            {
+                "name": "Git",
+                "cwd": "C:\\Users\\elahd\\OneDrive\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_AA4D39.base\\resources\\[qb]\\qb-delivery\\web",
+                "commands": [
+                    "cd C:\\Users\\elahd\\OneDrive\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_AA4D39.base\\resources\\``[qb``]\\qb-delivery"
+                ]
+            }
+        ]
+    }
+}

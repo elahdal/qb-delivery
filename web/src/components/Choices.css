@@ -1,0 +1,180 @@
+.deliveryOption-1{
+  /* Rectangle 13 */
+
+position: absolute;
+width: 887px;
+height: 469px;
+left: 481px;
+top: 133px;
+
+background: rgba(255, 255, 255, 0.25);
+border: 3px solid rgba(255, 255, 255, 0.4);
+backdrop-filter: blur(7.35px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 20px;
+
+}
+.deliveryOption{
+
+/* Rectangle 14 */
+position: absolute;
+width: 873px;
+height: 455px;
+margin: 7px;
+background: radial-gradient(50% 50% at 50% 50%, rgba(102, 102, 102, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
+border-radius: 15px;
+}
+
+.designframe1{
+    /* Rectangle 38 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 245px;
+height: 385px;
+margin: 15px;
+
+background: linear-gradient(270deg, rgba(255, 255, 255, 0.12) 0%, rgba(153, 153, 153, 0) 29.18%);
+border-radius: 11px;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+
+
+}
+
+.designframe2{
+/* Rectangle 39 */
+
+box-sizing: border-box;
+position: absolute;
+width: 245px;
+height: 385px;
+margin-top: 15px;
+margin-left: 615px;
+
+background: linear-gradient(270deg, rgba(255, 255, 255, 0.12) 0%, rgba(153, 153, 153, 0) 29.18%);
+border-radius: 20px;
+
+
+}
+
+.choice1frame{
+ /* Rectangle 13 */
+    box-sizing: border-box;
+    position: absolute;
+    width: 245px;
+    height: 415px;
+    margin: 20px;
+    margin-left: 55px;
+
+    background: radial-gradient(75.85% 75.85% at 50% 50%, rgba(255, 255, 255, 0.5) 0%, rgba(153, 153, 153, 0.5) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 11px;
+}
+
+.image1 {
+    margin : 7px;
+    width: 215px; /* adjust the width as needed */
+    height: auto; /* maintain aspect ratio */
+    max-width: 100%; /* ensure responsiveness */
+    background: #4a4a4a; /* fallback color */
+    border-radius: 7px;
+    border: 3px solid rgba(61, 217, 189, 0.2);
+
+}
+
+.logoPostal{
+    position: absolute;
+    width: 90px; /* adjust the width as needed */
+    height: auto;
+    top: 40px;
+    left: 75px;
+    
+}
+
+.goRequierment{
+  /* Rectangle 30 */
+    box-sizing: border-box;
+    width: 223px;
+    height: 104px;
+    margin-left: 6px;
+    margin-top: -5px;
+
+    background: rgba(0, 0, 0, 0.13);
+    border-radius: 5px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.goText{
+    width: 90px;
+    margin : 10px;
+}
+
+.textholder{
+    /* Forem ipsum dolor sit amet, consectetur adipis cing elit. Nunc vulputate libero et velit interduı aliquet odio matti consectetur adipis. */
+
+/* position: absolute;
+width: 199px;
+height: 21px;
+font-family: "Sen";
+font-weight: 700;
+font-size: 7px;
+line-height: 7px;*/
+color: rgba(177, 44, 44, 0.32); 
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+font-family: 'Sen', sans-serif;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.choice2frame{
+
+/* Rectangle 13 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 245px;
+height: 415px;
+margin: 20px;
+margin-left: 315px;
+
+
+background: radial-gradient(75.85% 75.85% at 50% 50%, rgba(255, 255, 255, 0.5) 0%, rgba(153, 153, 153, 0.5) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+border: 5px solid rgba(255, 255, 255, 0.2);
+border-radius: 11px;
+}
+
+.choice3frame{
+    /* Rectangle 13 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 245px;
+height: 415px;
+margin: 20px;
+margin-left: 575px;
+
+background: radial-gradient(75.85% 75.85% at 50% 50%, rgba(255, 255, 255, 0.5) 0%, rgba(153, 153, 153, 0.5) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+border: 5px solid rgba(255, 255, 255, 0.2);
+border-radius: 11px;
+
+}
+

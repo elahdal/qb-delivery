@@ -1,0 +1,128 @@
+body {
+    background-color: rgb(52, 52, 52);
+}
+.framecontainerPlayerStatus-1{
+
+    position: absolute;
+    width: 887px;
+    height: 383px;
+    left: 481px;
+    top: 620px;
+    
+    background: rgba(255, 255, 255, 0.25);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(7.35px);
+    border-radius: 20px;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Masque la scrollbar sur Firefox */
+
+}
+
+.framecontainer {
+    position: absolute;
+    width: 873px;
+    max-height: 455px; /* Permet le scroll si nécessaire */
+    margin: 7px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(102, 102, 102, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
+    border-radius: 15px;
+    overflow-y: scroll; /* Garde le scroll actif */
+    scrollbar-width: none; /* Masque la scrollbar sur Firefox */
+}
+
+    /* Masquer la scrollbar sur Chrome, Edge et Safari */
+.framecontainer::-webkit-scrollbar {
+    display: none;
+}
+  
+
+.playercontainer{
+/* Group 28 */
+position: relative;
+width: 854px;
+height: 74px;
+border: 1px solid #424242;
+margin: 10px;
+border-radius: 10px;
+background: radial-gradient(75.85% 75.85% at 50% 50%, rgba(107, 107, 107, 0.5) 0%, rgba(153, 153, 153, 0.5) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+
+
+
+
+}
+
+.playertime{/* Rectangle 44 */
+
+    position: absolute;
+    width: 115px;
+    height: 44px;
+    left: 0px;
+    top: 0px;
+    margin-top: 15px;
+    margin-left: 525px;
+
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 3px;
+
+    /* 01:45:34 */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13.3391px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: rgba(255, 255, 255, 0.2);
+
+
+}
+
+.playersituationB{ 
+width: 115px;
+height: 44px;
+left: 1167px;
+top: 242px;
+left: 50%;
+margin-top: 15px;
+margin-left: 650px;
+
+background: radial-gradient(62.5% 62.5% at 50% 50%, rgba(236, 201, 126, 0.34) 0%, rgba(134, 114, 70, 0.34) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+border: 2px solid rgba(236, 201, 126, 0.14);
+border-radius: 3px;
+
+/* Text */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+font-family: 'Inter', sans-serif;
+font-style: normal;
+font-weight: 600;
+font-size: 13.3391px;
+line-height: 16px;
+
+color: #ECC97E;
+
+}
+
+.inviteB{
+    
+/* Rectangle 42 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 44px;
+height: 44px;
+margin-top: 15px;
+margin-left: 10px;
+
+background: rgba(255, 255, 255, 0.56);
+border: 2px solid rgba(255, 255, 255, 0.64);
+border-radius: 3px;
+
+
+}
+
+
+
