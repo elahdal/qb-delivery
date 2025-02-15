@@ -6,8 +6,12 @@ import "./PlayerStatus.css"
 import "./Choices.css"
 import "./deliveryStats.css"
 import image from "../images/image.png"
+import image2 from "../images/image copy 3.png"
 import logoPostal from "../images/image copy.png"
+import LogoPostOp from "../images/image copy 4.png"
 import Gotext from "../images/image copy 2.png"
+import PostOpText from "../images/image copy 5.png"
+
 
 // This will set the NUI to visible if we are
 // developing in browser
@@ -74,8 +78,6 @@ const App: React.FC = () => {
         <div className="designframe1"></div>
         <div className="designframe2"></div>
 
-
-
         <div className="choice1frame">
           <img className="image1" src={image} />
           <img className="logoPostal" src={logoPostal} />
@@ -103,14 +105,11 @@ const App: React.FC = () => {
           <button className="ButtonSelect">Select</button>
         </div>
 
-
-
-
         <div className="choice2frame">
-        <img className="image1" src={image} />
-          <img className="logoPostal" src={logoPostal} />
+        <img className="image1" src={image2} />
+          <img className="logoPostal" src={LogoPostOp} />
           <div className="goRequierment">
-            <img className="goText" src={Gotext} />
+            <img className="goText" src={PostOpText} />
             <p className="textholder">Forem ipsum dolor sit amet, consectetur adipis cing elit. Nunc vulputate libero et velit interduı aliquet odio matti consectetur adipis.</p>
             <div className="quantity">
               <svg className="box" width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5078 5.61248L1.96201 2.91874L0 7.98117L7.50271 10.746L9.5078 5.61248Z" fill="white"/><path d="M10.3718 0V4.83323L17.108 2.43047L10.3718 0Z" fill="white"/><path d="M9.62827 4.83323V0L2.89208 2.4304L9.62827 4.83323Z" fill="white"/><path d="M10.4923 5.61248L12.4973 10.7457L20 7.98086L18.038 2.91844L10.4923 5.61248Z" fill="white"/><path d="M12.286 11.6213C12.1367 11.6213 11.9976 11.5305 11.9394 11.3791L10.3721 7.36082V16.3636L17.8823 13.7107V9.58596L12.4123 11.6017C12.3705 11.6148 12.329 11.6213 12.286 11.6213Z" fill="#ADADAD"/><path d="M7.71405 11.6213C7.6723 11.6213 7.62929 11.6147 7.59134 11.5976L2.12137 9.58193V13.7107L9.62797 16.3597V7.36093L8.06065 11.3792C8.0012 11.5306 7.86205 11.6213 7.71405 11.6213Z" fill="#ADADAD"/></svg>
@@ -132,8 +131,6 @@ const App: React.FC = () => {
           </div>
           <button className="ButtonSelect">Select</button>
         </div>
-
-
 
         <div className="choice3frame">
         <img className="image1" src={image} />
@@ -166,10 +163,7 @@ const App: React.FC = () => {
       </div>
     </div>    
 
-
-
-
-     <div className="framecontainerPlayerStatus-1">
+    <div className="framecontainerPlayerStatus-1">
       <div className="framecontainer">    
         {players.map(player => (
           <PlayerContainer key={player.id} player={player} />
@@ -177,17 +171,9 @@ const App: React.FC = () => {
       </div>
     </div>
 
-    
-
     <div className="deliveryFrame">
 
     </div>
-
-
-
-
-
-
 
 
 
