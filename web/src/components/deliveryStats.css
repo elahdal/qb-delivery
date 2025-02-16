@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 .deliveryFrame{
     position: absolute;
     width: 469px;
@@ -84,6 +87,52 @@ margin-top: 10px;
 background: #D9D9D9;
 border-radius: 5px;
 background: rgba(217, 217, 217, 0.35);
+}
+
+.progressBar{
+    /* Group 23 */
 
 
+box-sizing: border-box;
+
+position: absolute;
+width: 420px;
+height: 118px;
+margin-top: 215px;
+margin-left: 10px;
+
+background: radial-gradient(75.85% 75.85% at 50% 50%, rgba(255, 255, 255, 0.5) 0%, rgba(153, 153, 153, 0.5) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+border: 2px solid rgba(255, 255, 255, 0.2);
+border-radius: 5px;
+}
+
+.startB{
+/* Group 46 */
+box-sizing: border-box;
+
+position: absolute;
+width: 420px;
+height: 44px;
+margin-top: 342px;
+margin-left: 10px;
+
+background: linear-gradient(97.12deg, #5AFFE7 -14.73%, #6360D0 116.65%);
+border-radius: 8px;
+
+font-family: "Poppins", serif;
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+text-align: center;
+
+color: rgba(0, 0, 0, 0.52);
+
+}
+
+.startB:hover{
+    background: linear-gradient(97.12deg, #5AFFE7 -14.73%, #6360D0 116.65%);
+    cursor: pointer;
+    color: white;
 }
