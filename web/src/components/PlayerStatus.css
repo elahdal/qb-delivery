@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sen:wght@400..800&display=swap');
 
 body {
-    background-color: rgb(52, 52, 52);
+    background-color: transparent;
 }
 
 .framecontainerPlayerStatus-1{
@@ -12,12 +12,13 @@ body {
     left: 481px;
     top: 620px;
     
+    border-radius: 20px;
     background: rgba(255, 255, 255, 0.25);
     border: 3px solid rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(7.35px);
     border-radius: 20px;
     overflow-y: scroll;
-    scrollbar-width: none; /* Masque la scrollbar sur Firefox */
+    scrollbar-width: none; 
 
 }
 
@@ -37,13 +38,16 @@ body {
     display: none;
 }
   
+.framecontainerPlayerStatus-1::-webkit-scrollbar {
+    display: none;
+}
+
 
 .playercontainer{
 /* Group 28 */
 position: relative;
 width: 854px;
 height: 74px;
-border: 1px solid #424242;
 margin: 10px;
 border-radius: 10px;
 background: radial-gradient(75.85% 75.85% at 50% 50%, rgba(107, 107, 107, 0.5) 0%, rgba(153, 153, 153, 0.5) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;

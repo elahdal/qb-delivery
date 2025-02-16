@@ -13,6 +13,17 @@ import Gotext from "../images/image copy 2.png"
 import PostOpText from "../images/image copy 5.png"
 import profilepic from "../images/image copy 6.png"
 import logoGoMini from "../images/image copy 7.png"
+import trucPic from "../images/image copy 8.png"
+import logoDelivery  from "../images/image copy 9.png"
+import logoDelivery2 from "../images/image copy 10.png"
+
+
+
+
+
+
+
+
 
 // This will set the NUI to visible if we are
 // developing in browser
@@ -77,7 +88,8 @@ const App: React.FC = () => {
 
   return (
     <div className="rootframe">
-    <div className="deliveryOption-1">
+      {/* Problem here */}
+    <div className="deliveryOption-1"> 
       <div className="deliveryOption">
         <div className="designframe1"></div>
         <div className="designframe2"></div>
@@ -110,7 +122,7 @@ const App: React.FC = () => {
         </div>
 
         <div className="choice2frame">
-        <img className="image1" src={image2} />
+        <img className="image1" src={image} />
           <img className="logoPostal" src={LogoPostOp} />
           <div className="goRequierment">
             <img className="goText" src={PostOpText} />
@@ -176,6 +188,21 @@ const App: React.FC = () => {
     </div>
 
     <div className="deliveryFrame">
+      <div className="trucLayaout">
+        <img className="imgTruc" src={trucPic} width="471.5px"  />
+        <img className="logoImgTruc" src={logoDelivery} width="284px"  />
+        <img className="logoImgTruc2" src={logoDelivery2} width="130px"  />
+        <img className="logoImgTruc3" src={logoDelivery} width="284px"  />
+      </div>
+      <div className="deliveryStats">
+        <div className="deliveryAdress">
+        <svg className="designE" width="132" height="64" viewBox="0 0 132 64" fill="none" xmlns="http://www.w3.org/2000/svg"> <path opacity="0.5" d="M108.945 32.7849C108.33 32.9797 107.67 32.9797 107.055 32.7849L106.798 33.5946L107.055 32.7849L3.03717 -0.149372C1.73523 -0.561592 0.850433 -1.76982 0.850433 -3.13545L0.850403 -99.8883C0.850403 -101.254 1.7352 -102.462 3.03712 -102.874L107.055 -135.809C107.67 -136.003 108.33 -136.003 108.945 -135.809L212.963 -102.874C214.265 -102.462 215.15 -101.254 215.15 -99.8883L215.15 -3.13546C215.15 -1.76982 214.265 -0.561592 212.963 -0.149372L108.945 32.7849L109.202 33.5951L108.945 32.7849Z" fill="url(#paint0_linear_0_1)" fill-opacity="0.91" stroke="url(#paint1_linear_0_1)" stroke-width="1.70079"/> <path d="M157.945 62.7849C157.33 62.9797 156.67 62.9797 156.055 62.7849L155.798 63.5946L156.055 62.7849L52.0372 29.8506C50.7352 29.4384 49.8504 28.2302 49.8504 26.8645L49.8504 -69.8883C49.8504 -71.2539 50.7352 -72.4621 52.0371 -72.8744L156.055 -105.809C156.67 -106.003 157.33 -106.003 157.945 -105.809L261.963 -72.8744C263.265 -72.4621 264.15 -71.2539 264.15 -69.8883L264.15 26.8645C264.15 28.2302 263.265 29.4384 261.963 29.8506L157.945 62.7849L158.202 63.5951L157.945 62.7849Z" fill="url(#paint2_linear_0_1)" fill-opacity="0.91" stroke="url(#paint3_linear_0_1)" stroke-width="1.70079"/> <defs> <linearGradient id="paint0_linear_0_1" x1="96.5" y1="29.9999" x2="73.5" y2="-33.0001" gradientUnits="userSpaceOnUse"> <stop stop-color="white"/> <stop offset="1" stop-color="white" stop-opacity="0"/> </linearGradient> <linearGradient id="paint1_linear_0_1" x1="108" y1="33.9763" x2="21" y2="-45.5001" gradientUnits="userSpaceOnUse"> <stop stop-color="white"/> <stop offset="1" stop-color="white" stop-opacity="0"/> </linearGradient> <linearGradient id="paint2_linear_0_1" x1="145.5" y1="59.9999" x2="122.5" y2="-3.00006" gradientUnits="userSpaceOnUse"> <stop stop-color="white"/> <stop offset="1" stop-color="white" stop-opacity="0"/> </linearGradient> <linearGradient id="paint3_linear_0_1" x1="157" y1="63.9763" x2="70" y2="-15.5001" gradientUnits="userSpaceOnUse"> <stop stop-color="white"/> <stop offset="1" stop-color="white" stop-opacity="0"/> </linearGradient> </defs> </svg>
+
+        <svg className="designD" width="132" height="64" viewBox="0 0 132 64" fill="none" xmlns="http://www.w3.org/2000/svg"> <path opacity="0.5" d="M108.945 32.7849C108.33 32.9797 107.67 32.9797 107.055 32.7849L106.798 33.5946L107.055 32.7849L3.03717 -0.149372C1.73523 -0.561592 0.850433 -1.76982 0.850433 -3.13545L0.850403 -99.8883C0.850403 -101.254 1.7352 -102.462 3.03712 -102.874L107.055 -135.809C107.67 -136.003 108.33 -136.003 108.945 -135.809L212.963 -102.874C214.265 -102.462 215.15 -101.254 215.15 -99.8883L215.15 -3.13546C215.15 -1.76982 214.265 -0.561592 212.963 -0.149372L108.945 32.7849L109.202 33.5951L108.945 32.7849Z" fill="url(#paint0_linear_0_1)" fill-opacity="0.91" stroke="url(#paint1_linear_0_1)" stroke-width="1.70079"/> <path d="M157.945 62.7849C157.33 62.9797 156.67 62.9797 156.055 62.7849L155.798 63.5946L156.055 62.7849L52.0372 29.8506C50.7352 29.4384 49.8504 28.2302 49.8504 26.8645L49.8504 -69.8883C49.8504 -71.2539 50.7352 -72.4621 52.0371 -72.8744L156.055 -105.809C156.67 -106.003 157.33 -106.003 157.945 -105.809L261.963 -72.8744C263.265 -72.4621 264.15 -71.2539 264.15 -69.8883L264.15 26.8645C264.15 28.2302 263.265 29.4384 261.963 29.8506L157.945 62.7849L158.202 63.5951L157.945 62.7849Z" fill="url(#paint2_linear_0_1)" fill-opacity="0.91" stroke="url(#paint3_linear_0_1)" stroke-width="1.70079"/> <defs> <linearGradient id="paint0_linear_0_1" x1="96.5" y1="29.9999" x2="73.5" y2="-33.0001" gradientUnits="userSpaceOnUse"> <stop stop-color="white"/> <stop offset="1" stop-color="white" stop-opacity="0"/> </linearGradient> <linearGradient id="paint1_linear_0_1" x1="108" y1="33.9763" x2="21" y2="-45.5001" gradientUnits="userSpaceOnUse"> <stop stop-color="white"/> <stop offset="1" stop-color="white" stop-opacity="0"/> </linearGradient> <linearGradient id="paint2_linear_0_1" x1="145.5" y1="59.9999" x2="122.5" y2="-3.00006" gradientUnits="userSpaceOnUse"> <stop stop-color="white"/> <stop offset="1" stop-color="white" stop-opacity="0"/> </linearGradient> <linearGradient id="paint3_linear_0_1" x1="157" y1="63.9763" x2="70" y2="-15.5001" gradientUnits="userSpaceOnUse"> <stop stop-color="white"/> <stop offset="1" stop-color="white" stop-opacity="0"/> </linearGradient> </defs> </svg>
+        
+
+        </div>
+      </div>
 
     </div>
 
