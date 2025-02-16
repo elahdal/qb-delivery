@@ -4,28 +4,13 @@ body {
     background-color: transparent;
 }
 
-.framecontainerPlayerStatus-1{
-
-    position: absolute;
-    width: 887px;
-    height: 383px;
-    left: 481px;
-    top: 620px;
-    
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.25);
-    border: 3px solid rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(7.35px);
-    border-radius: 20px;
-    overflow-y: scroll;
-    scrollbar-width: none; 
-
-}
 
 .framecontainer {
+    left: 887px;
+    top: 611px;
     position: absolute;
     width: 873px;
-    max-height: 455px; /* Permet le scroll si nécessaire */
+    height: 383px; /* Permet le scroll si nécessaire */
     margin: 7px;
     background: radial-gradient(50% 50% at 50% 50%, rgba(102, 102, 102, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
     border-radius: 15px;
@@ -233,6 +218,5 @@ line-height: 10px;
 /* identical to box height */
 
 color: #79F1E0;
-
 
 }
