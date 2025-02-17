@@ -5,7 +5,7 @@ body {
 }
 
 
-.framecontainer {
+.Playersframe {
     left: 887px;
     top: 611px;
     position: absolute;
@@ -14,32 +14,25 @@ body {
     margin: 7px;
     background: radial-gradient(50% 50% at 50% 50%, rgba(102, 102, 102, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
     border-radius: 15px;
-    overflow-y: scroll; /* Garde le scroll actif */
-    scrollbar-width: none; /* Masque la scrollbar sur Firefox */
+    overflow-y: scroll; 
+    scrollbar-width: none; 
 }
 
     /* Masquer la scrollbar sur Chrome, Edge et Safari */
-.framecontainer::-webkit-scrollbar {
-    display: none;
-}
-  
-.framecontainerPlayerStatus-1::-webkit-scrollbar {
+.Playersframe::-webkit-scrollbar {
     display: none;
 }
 
 
 .playercontainer{
-/* Group 28 */
-position: relative;
-width: 854px;
-height: 74px;
-margin: 10px;
-border-radius: 10px;
-background: radial-gradient(75.85% 75.85% at 50% 50%, rgba(107, 107, 107, 0.5) 0%, rgba(153, 153, 153, 0.5) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
-
-
-
-
+    /* Group 28 */
+    position: relative;
+    width: 854px;
+    height: 74px;
+    margin: 10px;
+    border-radius: 10px;
+    background: radial-gradient(75.85% 75.85% at 50% 50%, rgba(107, 107, 107, 0.5) 0%, rgba(153, 153, 153, 0.5) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    scrollbar-width: none; 
 }
 
 .playertime{/* Rectangle 44 */
