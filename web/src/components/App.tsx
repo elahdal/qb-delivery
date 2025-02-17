@@ -1,7 +1,7 @@
 import React from "react";
 import { debugData } from "../utils/debugData";
 
-import DeliveryStats from "./DeliveryStats";
+import DeliveryStatsData from "./DeliveryStats";
 import Options from "./Options";
 import PlayersLobby from "./PlayersLobby";
 
@@ -37,7 +37,7 @@ const App: React.FC = () => {
 
       <Options/>
       <PlayersLobby/>
-      <DeliveryStats/>
+      <DeliveryStatsData/>
 
     </div>
   );

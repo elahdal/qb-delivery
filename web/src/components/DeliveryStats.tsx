@@ -13,7 +13,36 @@ import trucPic from "../images/imagecopy8.png"
 import logoDelivery from "../images/imagecopy9.png"
 
 
-const DeliveryStats:React.FC = () => {
+interface PlayerStats {
+    startAddress: string;
+    startAdressZip: string;
+    deliveryAddress: string;
+    deliveryAdressZip: string;
+    name: string;
+    status: string;
+    dailyDeliveryNb: number;
+    progression: number;
+}
+  
+interface PlayerStatsProps {
+    playerStats: PlayerStats;
+}
+
+// here fetchNui and fill this data
+const playerStats : PlayerStats[] = [{
+    startAddress: "4656 West Wood",
+    startAdressZip: "Los Santos 24562",
+    deliveryAddress: "2378 Grase",
+    deliveryAdressZip: "Los Santos 4362",
+    name: "Atiysu Dev",
+    status: "In transit",
+    dailyDeliveryNb: 4,
+    progression: 75
+}]
+
+
+
+const DeliveryStats:React.FC<PlayerStatsProps> = ({playerStats}) => {
     return (
 
         <div className="deliveryFrame">
@@ -37,8 +66,8 @@ const DeliveryStats:React.FC = () => {
                 <div className="profiLogo2"><img className="profileLogo2" src={logoGoMini}/></div>
                 <img className="profiLogo" src={profilepic} />
                 <p className="noIdea2">Personal</p>
-                <h1 className="PlayerName2">Atiysu Dev</h1>
-                <div className="deliveryStatus"><p className="dStatus">In transit</p></div>
+                <h1 className="PlayerName2">{playerStats.name}</h1>
+                <div className="deliveryStatus"><p className="dStatus">{playerStats.status}</p></div>
                 <div className="fromToAdresses">
                   <div className="line"></div>
                   <p className="from">From</p>
@@ -47,14 +76,14 @@ const DeliveryStats:React.FC = () => {
                   <div className="startAdr">
                       <div className="startAdress">
                         <p className="startAdress">
-                          <span style={{color: '#FFFFFF'}}>4656 West Wood,</span>
-                          <span style={{color: '#c6c6c6'}}>  Los Santos 24562</span>
+                          <span style={{color: '#FFFFFF'}}>{playerStats.startAddress},</span>
+                          <span style={{color: '#c6c6c6'}}>{playerStats.startAdressZip}</span>
                         </p>
                       </div> 
                       <div className="deliveryAdressA">
                         <p className="deliveryAdressA">
-                          <span style={{color: '#FFFFFF'}}>2378 Grase,</span>
-                          <span style={{color: '#c6c6c6'}}> Los Santos 4362</span>
+                          <span style={{color: '#FFFFFF'}}>{playerStats.deliveryAddress},</span>
+                          <span style={{color: '#c6c6c6'}}> {playerStats.deliveryAdressZip}</span>
                         </p>
                       </div> 
                   </div>
@@ -65,8 +94,8 @@ const DeliveryStats:React.FC = () => {
           </div>
           <div className="progressBar">
             <p className="daily">DAILY MISSION</p>
-            <p className="missionPerc"><span style={{color: '#5AFFE7'}}>75</span><span style={{color: '#c6c6c6'}}> %</span></p>
-            <p className="deliverCount"><span style={{color: '#5AFFE7'}}>Deliver</span><span style={{color: '#c6c6c6'}}> 4 Times</span></p>
+            <p className="missionPerc"><span style={{color: '#5AFFE7'}}>{playerStats.progression}</span><span style={{color: '#c6c6c6'}}> %</span></p>
+            <p className="deliverCount"><span style={{color: '#5AFFE7'}}>Deliver</span><span style={{color: '#c6c6c6'}}> {playerStats.dailyDeliveryNb} Times</span></p>
   
             <div className='container'><div className='bar'></div><div className="emptyBar"></div></div>
           </div>
@@ -78,4 +107,12 @@ const DeliveryStats:React.FC = () => {
     )
 };
 
-export default DeliveryStats;
+
+
+const DeliveryStatsData: React.FC = () => {
+    return (
+        <DeliveryStats playerStats={playerStats[0]} />
+    )
+};
+
+export default DeliveryStatsData;
