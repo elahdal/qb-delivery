@@ -72,7 +72,7 @@ background: radial-gradient(75.85% 75.85% at 50% 50%, rgba(107, 107, 107, 0.5) 0
 
 }
 
-.playersituationB{ 
+.lobby{ 
 width: 115px;
 height: 44px;
 left: 1167px;
@@ -95,6 +95,56 @@ line-height: 16px;
 
 color: #ECC97E;
 
+}
+
+.ready{ 
+    width: 115px;
+    height: 44px;
+    left: 1167px;
+    top: 242px;
+    left: 50%;
+    margin-top: 15px;
+    margin-left: 650px;
+    
+    background: radial-gradient(62.5% 62.5% at 50% 50%, rgba(126, 236, 219, 0.34) 0%, rgba(72, 134, 124, 0.34) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    border: 2px solid #7EECDB24;
+    border-radius: 3px;
+    
+    /* Text */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13.3391px;
+    line-height: 16px;
+    
+    color: #6BF9E4;
+    
+}
+
+.afk{ 
+    width: 115px;
+    height: 44px;
+    left: 1167px;
+    top: 242px;
+    left: 50%;
+    margin-top: 15px;
+    margin-left: 650px;
+    
+    background: radial-gradient(62.5% 62.5% at 50% 50%, rgba(255, 255, 255, 0.34) 0%, rgba(134, 134, 134, 0.34) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    border: 2px solid #FFFFFF24;
+    border-radius: 3px;
+    
+    /* Text */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13.3391px;
+    line-height: 16px;
+    
+    color: #d5d5d5;
+    
 }
 
 .inviteB{

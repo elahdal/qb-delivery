@@ -48,17 +48,17 @@ interface PlayerContainerProps {
 }
 
 const players: Player[] = [
-  { id: 1, playerState: "AFK", time: "01:22:20", image: profilepic, image2: logoGoMini },
+  { id: 1, playerState: "Ready", time: "01:22:20", image: profilepic, image2: logoGoMini },
   { id: 2, playerState: "Ready", time: "01:22:20" , image: profilepic, image2: logoGoMini  },
-  { id: 3, playerState: "Ready", time: "01:22:20", image: profilepic, image2: logoGoMini  },
-  { id: 3, playerState: "Ready", time: "01:22:20" , image: profilepic, image2: logoGoMini },
-  { id: 3, playerState: "Ready", time: "01:22:20", image: profilepic, image2: logoGoMini  },
-  { id: 3, playerState: "Ready", time: "01:22:20" , image: profilepic, image2: logoGoMini },
+  { id: 3, playerState: "lobby", time: "01:22:20", image: profilepic, image2: logoGoMini  },
+  { id: 3, playerState: "lobby", time: "01:22:20" , image: profilepic, image2: logoGoMini },
+  { id: 3, playerState: "AFK", time: "01:22:20", image: profilepic, image2: logoGoMini  },
+  { id: 3, playerState: "lobby", time: "01:22:20" , image: profilepic, image2: logoGoMini },
 ];
 
 const PlayerContainer: React.FC<PlayerContainerProps> = ({ player }) => (
   <div className="playercontainer">
-    <button className="playersituationB" onClick={() => console.log("Action sur", player.playerState)}>
+    <button className={`playersituation ${player.playerState.toLowerCase()}`} onClick={() => console.log("Action sur", player.playerState)}>
       {player.playerState}
     </button>
     <button className="inviteB">
