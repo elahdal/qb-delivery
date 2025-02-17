@@ -6,16 +6,16 @@ import "./PlayerStatus.css"
 import "./Choices.css"
 import "./deliveryStats.css"
 import image from "../images/image.png"
-import image2 from "../images/image copy 3.png"
-import logoPostal from "../images/image copy.png"
-import LogoPostOp from "../images/image copy 4.png"
-import Gotext from "../images/image copy 2.png"
-import PostOpText from "../images/image copy 5.png"
-import profilepic from "../images/image copy 6.png"
-import logoGoMini from "../images/image copy 7.png"
-import trucPic from "../images/image copy 8.png"
-import logoDelivery  from "../images/image copy 9.png"
-import logoDelivery2 from "../images/image copy 10.png"
+import image2 from "../images/imagecopy3.png"
+import logoPostal from "../images/imagecopy.png"
+import LogoPostOp from "../images/imagecopy4.png"
+import Gotext from "../images/imagecopy2.png"
+import PostOpText from "../images/imagecopy5.png"
+import profilepic from "../images/imagecopy6.png"
+import logoGoMini from "../images/imagecopy7.png"
+import trucPic from "../images/imagecopy8.png"
+import logoDelivery  from "../images/imagecopy9.png"
+import logoDelivery2 from "../images/imagecopy10.png"
 
 
 
@@ -122,7 +122,7 @@ const App: React.FC = () => {
         </div>
 
         <div className="choice2frame">
-        <img className="image1" src={image} />
+        <img className="image22" src={image2} />
           <img className="logoPostal" src={LogoPostOp} />
           <div className="goRequierment">
             <img className="goText" src={PostOpText} />

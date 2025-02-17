@@ -19,7 +19,7 @@
     inset: 0;
     padding: 5px;
     border-radius: 20px;
-    background: linear-gradient(0deg, #ccc7c7, #3DD6B8);
+    background: linear-gradient(0deg, transparent, #3DD6B8);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
@@ -252,7 +252,7 @@ color: rgba(0, 0, 0, 0.52);
     inset: 0;
     padding: 2px;
     border-radius: 28px;
-    background: linear-gradient(90deg, #b3c7c4, #3DD6B8);
+    background: linear-gradient(90deg, #b4bab900, #3DD6B8);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
@@ -377,25 +377,10 @@ color: #FFFFFF;
     --colour1: #5AFFE7;
     --colour2: #3c938e;
     --speed: 6s;
-    --patternRepeatWidth: 50;
+    --patternRepeatWidth: 30;
     --stripeWidth: calc(var(--patternRepeatWidth) * 1px);
-    --fundamentalBase: calc(1px * sqrt(2 * pow(var(--patternRepeatWidth), 2)));
-  }
-  
-  html,
-  body {
-    height: 100%;
-  }
-  
-  @keyframes slide {
-    from {
-      background-position-x: 0;
-    }
-    to {
-      background-position-x: var(--fundamentalBase);
-    }
-  }
-  
+}
+
 .container {
     height: 100%;
     display: flex;
@@ -403,29 +388,44 @@ color: #FFFFFF;
     margin-top: 25px;
     justify-content: center;
     align-items: center;
-    .bar {
-        min-height: 30px;
-        min-width: 30px;
-        border-radius: 5px;
-        width: calc(var(--fundamentalBase) * 4);
-        @media only screen and (max-width: 450px) {
-            width: calc(var(--fundamentalBase) * 3);
-        }
-        @media only screen and (max-width: 350px) {
-            width: calc(var(--fundamentalBase) * 2);
-        }
-        background-color: var(--colour2);
-        background-image: repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent calc(var(--stripeWidth) / 2),
-            var(--colour1) calc(var(--stripeWidth) / 2),
-            var(--colour1) var(--stripeWidth)
-        );
+}
 
-        animation: slide var(--speed) linear infinite;
-        will-change: background-position;
-        z-index: 2;
+.container .bar {
+    min-height: 28.5px;
+    min-width: 70px;
+    border-radius: 5px;
+    width: 255px;
+    background-color: var(--colour2);
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent calc(var(--stripeWidth) / 2),
+        var(--colour1) calc(var(--stripeWidth) / 2),
+        var(--colour1) var(--stripeWidth)
+    );
+    animation: slide 6s linear infinite;
+    will-change: background-position;
+    z-index: 2;
+}
+
+@keyframes slide {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: 141px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .container .bar {
+        width: 180px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .container .bar {
+        width: 140px;
     }
 }
 
