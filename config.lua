@@ -18,10 +18,10 @@ Config.DeliveryManagerPed = {
     propModel = `prop_fib_clipboard`,
 }
 
-Config.DeliveryVehicle = {
-    {model = `Boxville`, coords = vec4(-411.44, -2791.08, 6.0, 314.6)},    -- Exemple de coordonnées
-    {model = `4061868990`, coords = vec4(-405.75, -2795.4, 6.0, 311.85)},    -- Exemple de coordonnées
-    {model = `4061868990`, coords = vec4(-400.41, -2784.41, 6.0, 309.59)}    -- Exemple de coordonnées
+Config.DeliveryVehicles = {
+    {model = 4061868990, coords = vec4(-411.44, -2791.08, 5.0, 314.6)},    -- Exemple de coordonnées
+    {model = 4061868990, coords = vec4(-405.75, -2795.4, 5.0, 311.85)},    -- Exemple de coordonnées
+    {model = 4061868990, coords = vec4(-400.41, -2784.41, 5.0, 309.59)}    -- Exemple de coordonnées
 
 }
 
