@@ -31,7 +31,7 @@ interface PlayerStatsProps {
 // here fetchNui and fill this data
 const playerStats : PlayerStats[] = [{
     startAddress: "4656 West Wood",
-    startAdressZip: "Los Santos 24562",
+    startAdressZip: " Los Santos 24562",
     deliveryAddress: "2378 Grase",
     deliveryAdressZip: "Los Santos 4362",
     name: "Atiysu Dev",
@@ -44,7 +44,7 @@ const playerStats : PlayerStats[] = [{
 
 const DeliveryStats:React.FC<PlayerStatsProps> = ({playerStats}) => {
     return (
-
+        
         <div className="deliveryFrame">
         <div className="trucLayaout">
           <img className="imgTruc" src={trucPic} width="471.5px"  />
@@ -106,8 +106,6 @@ const DeliveryStats:React.FC<PlayerStatsProps> = ({playerStats}) => {
   
     )
 };
-
-
 
 const DeliveryStatsData: React.FC = () => {
     return (

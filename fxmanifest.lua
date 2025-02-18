@@ -12,6 +12,11 @@ games {
   "rdr3"
 }
 
+shared_scripts {
+  'config.lua',
+  '@ox_lib/init.lua',
+}
+
 ui_page 'web/build/index.html'
 
 client_script "client/**/*"
