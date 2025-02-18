@@ -20,14 +20,20 @@ Config.DeliveryManagerPed = {
 
 Config.DeliveryVehicles = {
     {model = 4061868990, coords = vec4(-411.44, -2791.08, 5.0, 314.6)},    -- Exemple de coordonnées
-    {model = 4061868990, coords = vec4(-405.75, -2795.4, 5.0, 311.85)},    -- Exemple de coordonnées
-    {model = 4061868990, coords = vec4(-400.41, -2784.41, 5.0, 309.59)}    -- Exemple de coordonnées
-
+    {model = 4061868990, coords = vec4(-405.75, -2795.4, 5.0, 311.85)}    -- Exemple de coordonnées
 }
 
 Config.DeliveryPlayerVehicle = {
-    model = `Boxville`, coords = vec4(-400.41, -2784.41, 6.0, 309.59)
+    model = 4061868990, coords = vec4(-400.41, -2784.41, 5.0, 309.59)
 }
+
+Config.DeliveryAdresses = {
+    {coords = vec4(1922.76, 3915.42, 32.57, 325.24), label = "Adresse 1"},    -- Exemple de coordonnées
+    {coords = vec4(-405.75, -2795.4, 5.0, 311.85), label = "Adresse 2"},    -- Exemple de coordonnées
+    {coords = vec4(1922.76, 3915.42, 32.57, 325.24), label = "Adresse 3"},    -- Exemple de coordonnées
+
+}
+
 
 -- Détecte automatiquement l'inventaire utilisé (ox_inventory ou qb-inventory)
 AddEventHandler("onResourceStart", function(resourceName)
