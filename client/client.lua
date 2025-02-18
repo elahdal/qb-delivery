@@ -73,8 +73,31 @@ local function SpawnBoss()
   print("[DEBUG] Animation jouée")
 end
 
+local function SpawnVehicules()
+  for _, vehicleInfo in ipairs(cfg.DeliveryVehicle) do
+    local model = 4061868990
+    RequestModel(model)
+    
+  
+    
+    local vehicle = CreateVehicle(model, vehicleInfo.coords.x, vehicleInfo.coords.y, vehicleInfo.coords.z, vehicleInfo.coords.w, false, false)
+    print("[DEBUG] Véhicule créé avec succès")
+    if vehicle then
+      SetEntityAsMissionEntity(vehicle, true, true)
+      SetVehicleOnGroundProperly(vehicle)
+      SetVehicleDoorsLocked(vehicle, 2)
+      SetVehicleDirtLevel(vehicle, 0.0)
+      FreezeEntityPosition(vehicle, true)
+    end
+    
+    SetModelAsNoLongerNeeded(model)
+  end
+  
+end
+
 CreateThread(function()
   SpawnBoss()
+  SpawnVehicules()
 end)
 
 

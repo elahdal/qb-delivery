@@ -19,8 +19,14 @@ Config.DeliveryManagerPed = {
 }
 
 Config.DeliveryVehicle = {
-    model = `phantom`,  -- Using backticks for proper model hash
-    coords = vec4(-424.33, -2789.82, 5.53, 317.1),    -- Exemple de coordonnées
+    {model = `Boxville`, coords = vec4(-411.44, -2791.08, 6.0, 314.6)},    -- Exemple de coordonnées
+    {model = `4061868990`, coords = vec4(-405.75, -2795.4, 6.0, 311.85)},    -- Exemple de coordonnées
+    {model = `4061868990`, coords = vec4(-400.41, -2784.41, 6.0, 309.59)}    -- Exemple de coordonnées
+
+}
+
+Config.DeliveryPlayerVehicle = {
+    model = `Boxville`, coords = vec4(-400.41, -2784.41, 6.0, 309.59)
 }
 
 -- Détecte automatiquement l'inventaire utilisé (ox_inventory ou qb-inventory)
