@@ -23,13 +23,13 @@ Delivery Script:
         -- Order the delivery locations by the nearest @done
         -- Set the 1st delivery location @done
             -- check if arrived at the delivery location @done
-            -- when arrived count the the basic deliveryWage + bonusTime 
-                -- add a message base on time of delivery
-            -- store in DB one instance of money earned (every delevrycompleted : old + moneyGained)
+            -- set timer algo fast = more money : on each check point
             -- if multiplayer need to add specific mission to others players ?
             -- look for delivery locations group them by zones (1 to 5) and randomly select thoses adresses
-            -- set timer algo fast = more money : on each check point
         -- When arrived at the location 
+            -- when arrived count the the basic deliveryWage + bonusTime 
+                -- add a message base on time of delivery
+            -- store in DB one instance of money earned (every delevrycompleted : old + moneyGained) @done
             -- customize animation (/e box) back of the vehicle
             -- mission multiplayer?
             -- popup UI to confirm the delivery

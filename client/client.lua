@@ -106,7 +106,6 @@ local function CheckForArrival(destination, destinationBlip)
       print("[DEBUG: CheckForArrival] Delivery time: " .. deliveryTime/1000)
       RemoveBlip(destinationBlip)
       QBCore.Functions.Notify('You have arrived at your destination!', 'success', 5000)
-      TriggerServerEvent('qb-delivery:server:PayPlayer', cfg.DeliveryPayment.wagePerDelivery)
       TriggerServerEvent('qb-delivery:server:UpdateDB', 9999)
       arrived = true
     end
@@ -132,6 +131,7 @@ local function StartDeliveryMission()
   end
   missionFinished = true
   return missionFinished
+
 end
 
 local function SpawnPedInVehicule()
@@ -175,8 +175,6 @@ end
 Citizen.CreateThread(function()
   SpawnBoss()
   SpawnVehicules()
-  local deliveryVehicleHash = SpawnPedInVehicule()
-  print("deliveryVehicleHash :", deliveryVehicleHash)
 
   exports.ox_target:addLocalEntity(deliveryManagerPed, {
     label = 'Start Delivery Job',
@@ -197,7 +195,12 @@ Citizen.CreateThread(function()
         toggleNuiFrame(true)
     end
 
-})
+  })
+
+  local deliveryVehicleHash = SpawnPedInVehicule()
+  print("deliveryVehicleHash :", deliveryVehicleHash)
+
+  
 end)
 
 
@@ -236,6 +239,9 @@ AddEventHandler('onResourceStart', function(resourceName)
   if (GetCurrentResourceName() ~= resourceName) then
       return     
   end
+  DeleteEntity(deliveryManagerPed)
+  DeleteEntity(notepad)
+  DeleteEntity(deliveryVehicleHash)
 end)
 
 AddEventHandler('onResourceStop', function(resourceName)
