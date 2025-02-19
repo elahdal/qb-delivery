@@ -2,6 +2,9 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local cfg = Config
 local deliveryManagerPed
 local notepad
+local boxProp = nil
+local triggerBoxAnimation, clearBoxAnimation = nil, nil
+
 
 local function toggleNuiFrame(shouldShow)
   SetNuiFocus(shouldShow, shouldShow)
@@ -92,25 +95,42 @@ local function GetNearestAdress(dataAdress)
   return distances
 end
 
--- Nouvelle fonction pour attendre l'arrivée du joueur
+local function applyDeliveryBonus(deliveryTimeSeconds)
+  local bonusMultiplier = 1.1
+  local averageTime = 200 
+  if deliveryTimeSeconds < averageTime then
+    -- Si la livraison est plus rapide que la moyenne, le multiplicateur augmente linéairement de 1.1 à 2
+    bonusMultiplier = 2 - ((deliveryTimeSeconds / averageTime) * 0.9)
+    QBCore.Functions.Notify('Bonus de livraison rapide appliqué! Multiplicateur: ' .. string.format("%.2f", bonusMultiplier), 'success', 5000)
+  end
+  -- Arrondir le multiplicateur pour conserver deux chiffres après la virgule
+  bonusMultiplier = math.floor(bonusMultiplier * 100 + 0.5) / 100
+
+  return bonusMultiplier
+end
+
 local function CheckForArrival(destination, destinationBlip)
   local arrived = false
-  -- Start timer for the delivery mission
-  local deliveryStartTime = GetGameTimer() -- Ce temps est en millisecondes (ms). Pour l'obtenir en secondes, divisez la valeur par 1000.
+  local deliveryStartTime = GetGameTimer() -- Start time in ms
   local deliveryTime
   while not arrived do
     Wait(500)
     local playerCoords = GetEntityCoords(PlayerPedId())
     if #(playerCoords - vector3(destination.x, destination.y, destination.z)) < 5.0 then
       deliveryTime = GetGameTimer() - deliveryStartTime
-      print("[DEBUG: CheckForArrival] Delivery time: " .. deliveryTime/1000)
+      local deliveryTimeSeconds = deliveryTime / 1000
+      print("[DEBUG: CheckForArrival] Delivery time: " .. deliveryTimeSeconds)
       RemoveBlip(destinationBlip)
-      QBCore.Functions.Notify('You have arrived at your destination!', 'success', 5000)
-      TriggerServerEvent('qb-delivery:server:UpdateDB', 9999)
+      if clearBoxAnimation then
+          clearBoxAnimation()
+      end
+      local bonusMultiplier = applyDeliveryBonus(deliveryTimeSeconds)
+      QBCore.Functions.Notify('Vous êtes arrivé à destination!', 'success', 5000)
+      TriggerServerEvent('qb-delivery:server:UpdateDB', cfg.DeliveryPayment.wagePerDelivery * bonusMultiplier)
       arrived = true
     end
   end
-  return deliveryTime/1000
+  return deliveryTime / 1000
 end
 
 local function StartDeliveryMission()
@@ -142,6 +162,23 @@ local function SpawnPedInVehicule()
   end
 
   local vehicle = CreateVehicle(model, cfg.DeliveryPlayerVehicle.coords.x, cfg.DeliveryPlayerVehicle.coords.y, cfg.DeliveryPlayerVehicle.coords.z, cfg.DeliveryPlayerVehicle.coords.w, false, false)
+  exports.ox_target:removeLocalEntity(vehicle)
+  exports.ox_target:addLocalEntity(vehicle, {
+    label = 'Take Box',
+    name = 'deliveryJob',
+    icon = 'fa-solid fa-truck-fast',
+
+    onSelect = function()
+      if triggerBoxAnimation then
+        triggerBoxAnimation()
+      else
+        print("triggerBoxAnimation is nil")
+      end
+    end
+
+  }
+)
+  
   print("[DEBUG: SpawnPedInVehicule] Véhicule created")
   if vehicle then
     SetEntityAsMissionEntity(vehicle, true, true)
@@ -208,10 +245,32 @@ end)
 
 
 
+triggerBoxAnimation = function()
+  lib.requestAnimDict("anim@heists@box_carry@")
+  TaskPlayAnim(cache.ped, "anim@heists@box_carry@", "idle", 8.0, -8.0, -1, 50, 0, false, false, false)
+  lib.requestModel("prop_cs_cardbox_01")
+  boxProp = CreateObject(`prop_cs_cardbox_01`, 0, 0, 0, true, true, false)
+  AttachEntityToEntity(boxProp, cache.ped, GetPedBoneIndex(cache.ped, 28422), 0, -0.1, -0.2, 0.0, 0.0, 0.0, true, true, false, true, 1, true)
+end
+
+clearBoxAnimation = function()
+  ClearPedTasks(cache.ped)
+  if boxProp then
+    DetachEntity(boxProp, true, true)
+    DeleteEntity(boxProp)
+    boxProp = nil
+  end
+end
 
 
+-- Appel des fonctions via les commandes
+RegisterCommand("box", function()
+  triggerBoxAnimation()
+end, false)
 
-
+RegisterCommand("ox", function()
+  clearBoxAnimation()
+end, false)
 
 
 
