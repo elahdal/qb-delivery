@@ -70,22 +70,6 @@ local function SpawnVehicules()
   
 end
 
-local function CheckIfArrived(dataAdress, destinationBlip)
-  Citizen.CreateThread(function()
-  local arrived = false
-  while not arrived do
-    Wait(500)
-    local playerCoords = GetEntityCoords(PlayerPedId())
-    if #(playerCoords - vector3(dataAdress.coords.x, dataAdress.coords.y, dataAdress.coords.z)) < 5.0 then
-      RemoveBlip(destinationBlip)
-      QBCore.Functions.Notify('You have arrived at your destination!', 'success', 5000)
-      arrived = true
-    end
-  end
-  return arrived
-  end)
-end
-
 local function GetNearestAdress(dataAdress)
   local distances = {}
   for _, deliveryAdresses in pairs(dataAdress) do
@@ -108,9 +92,32 @@ local function GetNearestAdress(dataAdress)
   return distances
 end
 
-local function GoToAdress()
+-- Nouvelle fonction pour attendre l'arrivée du joueur
+local function CheckForArrival(destination, destinationBlip)
+  local arrived = false
+  -- Start timer for the delivery mission
+  local deliveryStartTime = GetGameTimer() -- Ce temps est en millisecondes (ms). Pour l'obtenir en secondes, divisez la valeur par 1000.
+  local deliveryTime
+  while not arrived do
+    Wait(500)
+    local playerCoords = GetEntityCoords(PlayerPedId())
+    if #(playerCoords - vector3(destination.x, destination.y, destination.z)) < 5.0 then
+      deliveryTime = GetGameTimer() - deliveryStartTime
+      print("[DEBUG: CheckForArrival] Delivery time: " .. deliveryTime/1000)
+      RemoveBlip(destinationBlip)
+      QBCore.Functions.Notify('You have arrived at your destination!', 'success', 5000)
+      TriggerServerEvent('qb-delivery:server:PayPlayer', cfg.DeliveryPayment.wagePerDelivery)
+      TriggerServerEvent('qb-delivery:server:UpdateDB', 9999)
+      arrived = true
+    end
+  end
+  return deliveryTime/1000
+end
+
+local function StartDeliveryMission()
   local missionFinished = false
   local sortedAddresses = GetNearestAdress(cfg.DeliveryAdresses)
+  TriggerServerEvent('qb-delivery:server:StoreInDB')
   for i = 1, #sortedAddresses do
     Wait(500)  -- Small delay between iterations
     local dataAdress = sortedAddresses[i]
@@ -120,22 +127,12 @@ local function GoToAdress()
     SetBlipRoute(destinationBlip, true)
     print('Destination Label For loop:', destinationLabel)
     
-    -- Wait for player to arrive at destination
-    local arrived = false
-    while not arrived do
-      Wait(500)
-      local playerCoords = GetEntityCoords(PlayerPedId())
-      if #(playerCoords - vector3(destination.x, destination.y, destination.z)) < 5.0 then
-        RemoveBlip(destinationBlip)
-        QBCore.Functions.Notify('You have arrived at your destination!', 'success', 5000)
-        arrived = true
-      end
-    end
+    -- Appel de la fonction externe pour attendre l'arrivée
+    CheckForArrival(destination, destinationBlip)
   end
   missionFinished = true
   return missionFinished
 end
-
 
 local function SpawnPedInVehicule()
   local model = cfg.DeliveryPlayerVehicle.model
@@ -161,8 +158,11 @@ local function SpawnPedInVehicule()
         print("Sorted Addresses", address.label)
     end
 
-    if GoToAdress() then 
+    if StartDeliveryMission() then
       QBCore.Functions.Notify('You have completed the delivery!', 'success', 5000)
+      TriggerServerEvent('qb-delivery:server:PayPlayer', cfg.DeliveryPayment.CompensationIfMissionCompleted)
+    else
+      QBCore.Functions.Notify('You have failed the delivery!', 'error', 5000)
     end
     -- /!\ On rentre dans une boucle donc vaut mieux faire la boucle checkifArrived dans un thread
   end
@@ -171,7 +171,6 @@ local function SpawnPedInVehicule()
   -- si en mode multijoueur utiliser ce vehicule pur placer les joueurs
   return vehicle
 end
-
 
 Citizen.CreateThread(function()
   SpawnBoss()

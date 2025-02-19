@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "group": "MySQL",
+            "username": "root",
+            "database": "qbcoreframework_945de8",
+            "name": "SQLfimeM",
+            "password": ""
+        }
+    ]
+}
