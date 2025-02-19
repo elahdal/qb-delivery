@@ -1,43 +1,44 @@
-UI @done
-=> Clean the react code 
-=> make it dynamic 
+********** UI ********** 
+-- Clean the react code @done
+-- make it dynamic 
+    -- Add OnSelected Option (sound & animation)
+    -- Add OnSelected Mission (sound & animation)
 
 
 Delivery Script: 
-
-1-Ped Intraction
-    => StartJob {UI Animation show}
-    => FinishJob {fetch DB & Pay the player/s} + Automaticly when return vehicle 
-    => Claim money (if player>1 each player can claim money independently)
-
-2-UI Animation & Lobby invite + StartJob (/!\ Job != Mission)
-    => In order to invite friends to the lobby, the players need to start the Job 
-    => In order to start the mission, the player need to be marked as Ready
-    => Once the mission is started, Players can't invite anymore their friends
-    => l'UI need to be available any time when mission is stated (players can see the progress) Option to show/unshow the UI
-    => Change Player OnJob Status to InTransit
-
-3-After mission start  
-    => Spawn the players in the delivery vehicle
-    => Set the 1st delivery location
-        -- if multiplayer need to add specific mission to others players ?
-        -- look for delivery locations group them by zones (1 to 5) and randomly select thoses adresses
-        -- set timer algo fast = more money : on each check point
-    => When arrived at the location 
-        -- customize animation (/e box) back of the vehicle
-        -- mission multiplayer? 
-        -- popup UI to confirm the delivery
-        -- store money gained Money in DB 
-        -- set the next delivery location zone 2 .... & repeat
-    => When Finished Get Bonus Money From Ped
-        -- return vehicle to get bonus money
-        -- store bonus money in DB
-        -- set mission status on Off
-    => Claim your money
-        -- Interaction with the ped    
-        -- Pay the player & delete money from DB
-
-
-//Bonus
-Make custom uniform for delivery job
-Make custom vehicle for delivery job
+    1-Ped Intraction
+        -- StartJob {UI Animation show} ✅ @done
+            -- FinishJob Automaticly when return vehicle
+        -- Claim money {fetch DB & Pay the player/s}  (if player>1 each player can claim money independently)
+    
+    2-UI Animation & Lobby invite + StartJob (/!\ Job != Mission)
+        -- In order to invite friends to the lobby, the players need to start the Job 
+        -- In order to start the mission, the player need to be marked as Ready
+        -- Once the mission is started, Players can't invite anymore their friends
+        -- l'UI need to be available any time when mission is stated (players can see the progress) Option to show/unshow the UI
+        -- Change Player OnJob Status to InTransit 
+    
+    3-After mission start  
+        -- Spawn the players in the delivery vehicle ✅ @done
+        -- Set the 1st delivery location @done
+            -- if multiplayer need to add specific mission to others players ?
+            -- look for delivery locations group them by zones (1 to 5) and randomly select thoses adresses
+            -- set timer algo fast = more money : on each check point
+        -- When arrived at the location 
+            -- customize animation (/e box) back of the vehicle
+            -- mission multiplayer?
+            -- popup UI to confirm the delivery
+            -- store money gained Money in DB 
+            -- set the next delivery location zone 2 .... & repeat
+        -- When Finished Get Bonus Money From Ped
+            -- return vehicle to get bonus money
+            -- store bonus money in DB
+            -- set mission status on Off
+        -- Claim your money
+            -- Interaction with the ped    
+            -- Pay the player & delete money from DB
+    
+    
+    //Bonus
+    -- Make custom uniform for delivery job 
+    -- Make custom vehicle for delivery job

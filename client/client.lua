@@ -108,9 +108,8 @@ local function GetNearestAdress(dataAdress)
   return distances
 end
 
-local function GoToAdress(AdressDataIndex)
+local function GoToAdress()
   local missionFinished = false
-  local count = 0
   local sortedAddresses = GetNearestAdress(cfg.DeliveryAdresses)
   for i = 1, #sortedAddresses do
     Wait(500)  -- Small delay between iterations
@@ -133,6 +132,8 @@ local function GoToAdress(AdressDataIndex)
       end
     end
   end
+  missionFinished = true
+  return missionFinished
 end
 
 
@@ -160,7 +161,9 @@ local function SpawnPedInVehicule()
         print("Sorted Addresses", address.label)
     end
 
-    GoToAdress(1)
+    if GoToAdress() then 
+      QBCore.Functions.Notify('You have completed the delivery!', 'success', 5000)
+    end
     -- /!\ On rentre dans une boucle donc vaut mieux faire la boucle checkifArrived dans un thread
   end
 
