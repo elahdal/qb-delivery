@@ -7,7 +7,7 @@ Delivery Script:
 
 1-Ped Intraction
     => StartJob {UI Animation show}
-        => FinishJob {fetch DB & Pay the player/s} + Automaticly when return vehicle 
+    => FinishJob {fetch DB & Pay the player/s} + Automaticly when return vehicle 
     => Claim money (if player>1 each player can claim money independently)
 
 2-UI Animation & Lobby invite + StartJob (/!\ Job != Mission)

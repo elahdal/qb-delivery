@@ -96,6 +96,7 @@ local function GetNearestAdress(dataAdress)
     local distance = #(playerCoords - vehicleCoords)
     print("[DEBUG: GetNearestAdress] Distance to vehicle: " .. distance)
     table.insert(distances, {
+      coords = vector3(deliveryAdresses.coords.x, deliveryAdresses.coords.y, deliveryAdresses.coords.z),
       label = deliveryAdresses.label,
       distance = distance
     })
@@ -108,13 +109,30 @@ local function GetNearestAdress(dataAdress)
 end
 
 local function GoToAdress(AdressDataIndex)
-  local dataAdress = cfg.DeliveryAdresses[AdressDataIndex]
-  local destination = dataAdress.coords
-  local destinationLabel = dataAdress.label
-  local destinationBlip = AddBlipForCoord(destination.x, destination.y, destination.z)
-  SetBlipRoute(destinationBlip, true)
-  print('Destination Label:', destinationLabel)
-  CheckIfArrived(dataAdress, destinationBlip)
+  local missionFinished = false
+  local count = 0
+  local sortedAddresses = GetNearestAdress(cfg.DeliveryAdresses)
+  for i = 1, #sortedAddresses do
+    Wait(500)  -- Small delay between iterations
+    local dataAdress = sortedAddresses[i]
+    local destination = dataAdress.coords
+    local destinationLabel = dataAdress.label
+    local destinationBlip = AddBlipForCoord(destination.x, destination.y, destination.z)
+    SetBlipRoute(destinationBlip, true)
+    print('Destination Label For loop:', destinationLabel)
+    
+    -- Wait for player to arrive at destination
+    local arrived = false
+    while not arrived do
+      Wait(500)
+      local playerCoords = GetEntityCoords(PlayerPedId())
+      if #(playerCoords - vector3(destination.x, destination.y, destination.z)) < 5.0 then
+        RemoveBlip(destinationBlip)
+        QBCore.Functions.Notify('You have arrived at your destination!', 'success', 5000)
+        arrived = true
+      end
+    end
+  end
 end
 
 
@@ -142,9 +160,8 @@ local function SpawnPedInVehicule()
         print("Sorted Addresses", address.label)
     end
 
-    -- /!\ On rentre dans une boucle donc vaut mieux faire la boucle checkifArrived dans un thread
     GoToAdress(1)
-
+    -- /!\ On rentre dans une boucle donc vaut mieux faire la boucle checkifArrived dans un thread
   end
 
   SetModelAsNoLongerNeeded(model)
@@ -156,8 +173,8 @@ end
 Citizen.CreateThread(function()
   SpawnBoss()
   SpawnVehicules()
-  local test = SpawnPedInVehicule()
-  print("test", test)
+  local deliveryVehicleHash = SpawnPedInVehicule()
+  print("deliveryVehicleHash :", deliveryVehicleHash)
 
   exports.ox_target:addLocalEntity(deliveryManagerPed, {
     label = 'Start Delivery Job',

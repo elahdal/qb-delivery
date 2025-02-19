@@ -28,10 +28,10 @@ Config.DeliveryPlayerVehicle = {
 }
 
 Config.DeliveryAdresses = {
-    {coords = vec4(1922.76, 3915.42, 32.57, 325.24), label = "Adresse 1"},    -- Exemple de coordonnées
-    {coords = vec4(-405.75, -2795.4, 5.0, 311.85), label = "Adresse 2"},    -- Exemple de coordonnées
-    {coords = vec4(1922.76, 3915.42, 32.57, 325.24), label = "Adresse 3"},    -- Exemple de coordonnées
-
+    {coords = vec4(1922.76, 3915.42, 32.57, 325.24), label = "Adresse b3ida"},    -- Exemple de coordonnées
+    {coords = vec4(-405.75, -2795.4, 5.0, 311.85), label = "Adresse 1"},    -- Exemple de coordonnées
+    {coords = vec4(1523.78, 2218.86, 76.9, 29.5), label = "Adresse Lwst"},    -- Exemple de coordonnées
+    {coords = vec4(3794.82, 4467.25, 5.62, 295.95), label = "Adresse B3ida bzzzf"},    -- Exemple de coordonnées
 }
 
 
