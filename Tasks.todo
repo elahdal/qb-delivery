@@ -30,11 +30,13 @@ Delivery Script:
             -- when arrived count the the basic deliveryWage + bonusTime @done
                 -- add a message base on time of delivery @done
             -- store in DB one instance of money earned (every delevrycompleted : old + moneyGained) @done
-            -- customize animation (/e box) back of the vehicle
+            -- customize animation (/e box) back of the vehicle @done
+            -- show a circle target for delivery 
+            -- link UI w/ the job 
             -- mission multiplayer?
             -- popup UI to confirm the delivery
-            -- store money gained Money in DB 
-            -- set the next delivery location zone 2 .... & repeat
+            -- store money gained Money in DB @done
+            -- set the next delivery location zone 2 .... & repeat @done
         -- When Finished Get Bonus Money From Ped
             -- return vehicle to get bonus money
             -- store bonus money in DB
