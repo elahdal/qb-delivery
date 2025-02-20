@@ -117,7 +117,7 @@ local function CheckForArrival(destination, destinationBlip)
   while not arrived do
     Wait(500)
     local playerCoords = GetEntityCoords(PlayerPedId())
-    if #(playerCoords - vector3(destination.x, destination.y, destination.z)) < 1 and animationOn then
+    if #(playerCoords - vector3(destination.x, destination.y, destination.z)) < 1.0 and animationOn then
       deliveryTime = GetGameTimer() - deliveryStartTime
       local deliveryTimeSeconds = deliveryTime / 1000
       print("[DEBUG: CheckForArrival] Delivery time: " .. deliveryTimeSeconds)
@@ -136,12 +136,11 @@ local deliveryZone = cfg.DeliveryAdresses[5].coords
 local zoneRadius = 0.65  
 local markerActive = true
 local function zone()
-  print("Delivery Zone: ", deliveryZone)
 Citizen.CreateThread(function()
   while markerActive do
     Citizen.Wait(0)
     local playerCoords = GetEntityCoords(PlayerPedId())
-    local distance = #(playerCoords - vector3(deliveryZone.x, deliveryZone.y, deliveryZone.z))
+    local distance = #(playerCoords - deliveryZone)
     
     if distance < zoneRadius and animationOn then
       if clearBoxAnimation then
