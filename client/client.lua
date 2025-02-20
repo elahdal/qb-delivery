@@ -122,38 +122,49 @@ local function CheckForArrival(destination, destinationBlip)
       local deliveryTimeSeconds = deliveryTime / 1000
       print("[DEBUG: CheckForArrival] Delivery time: " .. deliveryTimeSeconds)
       RemoveBlip(destinationBlip)
-      
+      if clearBoxAnimation then
+         clearBoxAnimation()
+      end
       local bonusMultiplier = applyDeliveryBonus(deliveryTimeSeconds)
       QBCore.Functions.Notify('Vous êtes arrivé à destination!', 'success', 5000)
       TriggerServerEvent('qb-delivery:server:UpdateDB', cfg.DeliveryPayment.wagePerDelivery * bonusMultiplier)
       arrived = true
-    end
+    else
+      CreateThread(function()
+        while not arrived do
+          Wait(0)
+            DrawMarker(27, destination.x, destination.y, destination.z - 0.8 , 0.0, 0.0, 0.0, 0.0, 180.0, 0.0, 2.0, 2.0, 2.0, 255, 255, 0, 150, false, true, 2, nil, nil, false)
+        end
+      end)    
+      end
   end
   return deliveryTime / 1000
 end
 
-local deliveryZone = cfg.DeliveryAdresses[5].coords
-local zoneRadius = 0.65  
-local markerActive = true
-local function zone()
-Citizen.CreateThread(function()
-  while markerActive do
-    Citizen.Wait(0)
-    local playerCoords = GetEntityCoords(PlayerPedId())
-    local distance = #(playerCoords - deliveryZone)
-    
-    if distance < zoneRadius and animationOn then
-      if clearBoxAnimation then
-        clearBoxAnimation()
-      end
-      markerActive = false   
-    else
-      DrawMarker(27, deliveryZone.x, deliveryZone.y, deliveryZone.z - 0.8, 0, 0, 0, 0, 0, 0, zoneRadius * 2, zoneRadius * 2, 0.2, 255, 255, 0, 150, false, false, 2, false, nil, nil, false)
-    end
-  end
-end)
-
-end
+-- local zoneRadius = 0.65
+-- local markerActive = true
+-- local function zone()
+--   Citizen.CreateThread(function()
+--     while markerActive do
+--       Citizen.Wait(0)
+--       local playerCoords = GetEntityCoords(PlayerPedId())
+      
+--       for _, delivery in ipairs(cfg.DeliveryAdresses) do
+--         local deliveryZone = delivery.coords
+--         local distance = #(playerCoords - deliveryZone)
+        
+--         if distance < zoneRadius and animationOn then
+--           if clearBoxAnimation then
+--             clearBoxAnimation()
+--           end
+--           break
+--         else
+--           DrawMarker(27, deliveryZone.x, deliveryZone.y, deliveryZone.z - 0.8, 0, 0, 0, 0, 0, 0, zoneRadius * 2, zoneRadius * 2, 0.2, 255, 255, 0, 150, false, false, 2, false, nil, nil, false)
+--         end
+--       end
+--     end
+--   end)
+-- end
 
 local function StartDeliveryMission()
   local missionFinished = false
@@ -170,7 +181,7 @@ local function StartDeliveryMission()
     
     -- Appel de la fonction externe pour attendre l'arrivée
     CheckForArrival(destination, destinationBlip)
-    zone()
+    -- zone()
 
   end
   missionFinished = true
@@ -235,7 +246,6 @@ end
 
 Citizen.CreateThread(function()
   SpawnBoss()
-  zone()
   SpawnVehicules()
 
   exports.ox_target:addLocalEntity(deliveryManagerPed, {
