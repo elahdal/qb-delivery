@@ -2,11 +2,33 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local cfg = Config
 
 RegisterNetEvent('qb-delivery:server:PayPlayer')
-AddEventHandler('qb-delivery:server:PayPlayer', function(amountToPay)
+AddEventHandler('qb-delivery:server:PayPlayer', function()
     local src = source
+    -- print("[DEBUG] PayPlayer event triggered by source: " .. tostring(src))
     local Player = QBCore.Functions.GetPlayer(src)
-    Player.Functions.AddMoney('cash', amountToPay)
-    TriggerClientEvent('QBCore:Notify', src, 'Vous avez reçu ' .. cfg.DeliveryPayment.CompensationIfMissionCompleted .. '$', 'success')
+    local citizenid = Player.PlayerData.citizenid
+    -- print("[DEBUG] Fetching payment for citizenid: " .. tostring(citizenid))
+    
+    exports.oxmysql:fetch("SELECT payment_amount FROM delivery_data WHERE player_id = ?", { citizenid }, function(result)
+        local payment = 0
+        if result and result[1] and result[1].payment_amount then
+            payment = result[1].payment_amount
+        end
+        
+        print("[DEBUG] Payment fetched: " .. tostring(payment))
+        
+        if payment then
+            Player.Functions.AddMoney('cash', payment)
+            -- print("[DEBUG] Added money (" .. tostring(payment) .. ") to player with citizenid: " .. tostring(citizenid))
+            TriggerClientEvent('QBCore:Notify', src, 'Vous avez reçu ' .. payment .. '$', 'success')
+            exports.oxmysql:execute("UPDATE delivery_data SET payment_amount = 0 WHERE player_id = ?", { citizenid }, function(affectedRows)
+                -- print("[DEBUG] Payment reset in DB. Affected rows: " .. tostring(affectedRows))
+            end)
+        else
+            -- print("[DEBUG] No payment available for citizenid: " .. tostring(citizenid))
+            TriggerClientEvent('QBCore:Notify', src, "Aucun paiement disponible.", "error")
+        end
+    end)
 end)
 
 RegisterNetEvent('qb-delivery:server:StoreInDB')

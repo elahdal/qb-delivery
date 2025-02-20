@@ -12,29 +12,24 @@ local function toggleNuiFrame(shouldShow)
   SendReactMessage('setVisible', shouldShow)
 end
 
-local function SpawnBoss()
+local function SpawnDeliveryManager()
   local model = cfg.DeliveryManagerPed.model
   local propModel = cfg.DeliveryManagerPed.propModel
   
-  print("[DEBUG] Demande de chargement du modèle Ped et Notepad")
   RequestModel(model)
   RequestModel(propModel)
   
   while not HasModelLoaded(model) do
       Wait(100)
   end
-  
   while not HasModelLoaded(propModel) do
       Wait(100)
   end
   
-  print("[DEBUG] Modèles chargés avec succès")
-
   deliveryManagerPed = CreatePed(0, model, cfg.DeliveryManagerPed.coords.x, cfg.DeliveryManagerPed.coords.y, cfg.DeliveryManagerPed.coords.z, cfg.DeliveryManagerPed.coords.w, false, false)
   notepad = CreateObject(propModel, cfg.DeliveryManagerPed.coords.x, cfg.DeliveryManagerPed.coords.y, cfg.DeliveryManagerPed.coords.z, true, true, false)
 
   AttachEntityToEntity(notepad, deliveryManagerPed, GetPedBoneIndex(deliveryManagerPed, 36029), 0.1, 0.0, 0.1, 255.0, 300.0, 0.0, true, true, false, true, 1, true)
-
   SetEntityInvincible(deliveryManagerPed, true)
   FreezeEntityPosition(deliveryManagerPed, true)
   SetBlockingOfNonTemporaryEvents(deliveryManagerPed, true)
@@ -51,7 +46,7 @@ local function SpawnBoss()
   TaskPlayAnim(deliveryManagerPed, animDict, "base", 8.0, -8.0, -1, 1, 0, false, false, false)
 end
 
-local function SpawnVehicules()
+local function SpawnDeliveryVehicules()
   for _, vehicleInfo in ipairs(cfg.DeliveryVehicles) do
     local model = vehicleInfo.model
     RequestModel(model)
@@ -60,7 +55,6 @@ local function SpawnVehicules()
     end
 
     local vehicle = CreateVehicle(model, vehicleInfo.coords.x, vehicleInfo.coords.y, vehicleInfo.coords.z, vehicleInfo.coords.w, false, false)
-    print("[DEBUG] Véhicule créé avec succès")
     if vehicle then
       SetEntityAsMissionEntity(vehicle, true, true)
       SetVehicleOnGroundProperly(vehicle)
@@ -75,24 +69,42 @@ local function SpawnVehicules()
 end
 
 local function GetNearestAdress(dataAdress)
-  local distances = {}
-  for _, deliveryAdresses in pairs(dataAdress) do
-    print("[DEBUG: GetNearestAdress] Adresses: " .. deliveryAdresses.label)
+  local allAddresses = {}
+  for _, addr in pairs(dataAdress) do
+    table.insert(allAddresses, addr)
+  end
 
-    local playerCoords = GetEntityCoords(PlayerPedId())
-    local vehicleCoords = vector3(deliveryAdresses.coords.x, deliveryAdresses.coords.y, deliveryAdresses.coords.z)
-    local distance = #(playerCoords - vehicleCoords)
-    print("[DEBUG: GetNearestAdress] Distance to vehicle: " .. distance)
+  -- Shuffle the addresses randomly
+  for i = #allAddresses, 2, -1 do
+    local j = math.random(i)
+    allAddresses[i], allAddresses[j] = allAddresses[j], allAddresses[i]
+  end
+
+  -- Take only 10 random addresses (or all if fewer than 10)
+  local selectedAddresses = {}
+  for i = 1, math.min(1, #allAddresses) do
+    table.insert(selectedAddresses, allAddresses[i])
+  end
+
+  local distances = {}
+  local playerCoords = GetEntityCoords(PlayerPedId())
+  for _, addr in ipairs(selectedAddresses) do
+    -- print("[DEBUG: GetNearestAdress] Adresse: " .. addr.label)
+    local addrCoords = vector3(addr.coords.x, addr.coords.y, addr.coords.z)
+    local distance = #(playerCoords - addrCoords)
+    -- print("[DEBUG: GetNearestAdress] Distance to address: " .. distance)
     table.insert(distances, {
-      coords = vector3(deliveryAdresses.coords.x, deliveryAdresses.coords.y, deliveryAdresses.coords.z),
-      label = deliveryAdresses.label,
+      coords = addr.coords,
+      label = addr.label,
+      zip = addr.ZipCode,
       distance = distance
     })
-    -- Sort the distances table based on distance
-    table.sort(distances, function(a, b)
-      return a.distance < b.distance
-    end)
   end
+
+  table.sort(distances, function(a, b)
+    return a.distance < b.distance
+  end)
+
   return distances
 end
 
@@ -120,12 +132,13 @@ local function CheckForArrival(destination, destinationBlip)
     if #(playerCoords - vector3(destination.x, destination.y, destination.z)) < 1.0 and animationOn then
       deliveryTime = GetGameTimer() - deliveryStartTime
       local deliveryTimeSeconds = deliveryTime / 1000
-      print("[DEBUG: CheckForArrival] Delivery time: " .. deliveryTimeSeconds)
+      -- print("[DEBUG: CheckForArrival] Delivery time: " .. deliveryTimeSeconds)
       RemoveBlip(destinationBlip)
       if clearBoxAnimation then
          clearBoxAnimation()
       end
       local bonusMultiplier = applyDeliveryBonus(deliveryTimeSeconds)
+      -- Pense ici a customiser l'UI pour popup
       QBCore.Functions.Notify('Vous êtes arrivé à destination!', 'success', 5000)
       TriggerServerEvent('qb-delivery:server:UpdateDB', cfg.DeliveryPayment.wagePerDelivery * bonusMultiplier)
       arrived = true
@@ -133,38 +146,13 @@ local function CheckForArrival(destination, destinationBlip)
       CreateThread(function()
         while not arrived do
           Wait(0)
-            DrawMarker(27, destination.x, destination.y, destination.z - 0.8 , 0.0, 0.0, 0.0, 0.0, 180.0, 0.0, 2.0, 2.0, 2.0, 255, 255, 0, 150, false, true, 2, nil, nil, false)
+            DrawMarker(27, destination.x, destination.y, destination.z - 0.9, 0.0, 0.0, 0.0, 0.0, 180.0, 0.0, 1.0, 1.0, 1.0, 255, 255, 0, 150, false, true, 2, nil, nil, false)
         end
       end)    
       end
   end
   return deliveryTime / 1000
 end
-
--- local zoneRadius = 0.65
--- local markerActive = true
--- local function zone()
---   Citizen.CreateThread(function()
---     while markerActive do
---       Citizen.Wait(0)
---       local playerCoords = GetEntityCoords(PlayerPedId())
-      
---       for _, delivery in ipairs(cfg.DeliveryAdresses) do
---         local deliveryZone = delivery.coords
---         local distance = #(playerCoords - deliveryZone)
-        
---         if distance < zoneRadius and animationOn then
---           if clearBoxAnimation then
---             clearBoxAnimation()
---           end
---           break
---         else
---           DrawMarker(27, deliveryZone.x, deliveryZone.y, deliveryZone.z - 0.8, 0, 0, 0, 0, 0, 0, zoneRadius * 2, zoneRadius * 2, 0.2, 255, 255, 0, 150, false, false, 2, false, nil, nil, false)
---         end
---       end
---     end
---   end)
--- end
 
 local function StartDeliveryMission()
   local missionFinished = false
@@ -201,18 +189,27 @@ local function SpawnPedInVehicule()
   exports.ox_target:addLocalEntity(vehicle, {
     label = 'Take Box',
     name = 'deliveryJob',
-    icon = 'fa-solid fa-truck-fast',
+    icon = 'fa-solid fa-box',
 
     onSelect = function()
       if triggerBoxAnimation then
         triggerBoxAnimation()
-      else
-        print("triggerBoxAnimation is nil")
       end
     end
 
-  }
-)
+  })
+  exports.ox_target:addLocalEntity(vehicle, {
+    label = 'Drop Box',
+    name = 'Boxb',
+    icon = 'fa-solid fa-box-open',
+
+    onSelect = function()
+      if clearBoxAnimation then
+        clearBoxAnimation()
+      end
+    end
+
+  })
   
   print("[DEBUG: SpawnPedInVehicule] Véhicule created")
   if vehicle then
@@ -232,7 +229,6 @@ local function SpawnPedInVehicule()
 
     if StartDeliveryMission() then
       QBCore.Functions.Notify('You have completed the delivery!', 'success', 5000)
-      TriggerServerEvent('qb-delivery:server:PayPlayer', cfg.DeliveryPayment.CompensationIfMissionCompleted)
     else
       QBCore.Functions.Notify('You have failed the delivery!', 'error', 5000)
     end
@@ -245,8 +241,8 @@ local function SpawnPedInVehicule()
 end
 
 Citizen.CreateThread(function()
-  SpawnBoss()
-  SpawnVehicules()
+  SpawnDeliveryManager()
+  SpawnDeliveryVehicules()
 
   exports.ox_target:addLocalEntity(deliveryManagerPed, {
     label = 'Start Delivery Job',
@@ -257,20 +253,20 @@ Citizen.CreateThread(function()
         toggleNuiFrame(true)
     end
   })
-
-  exports.ox_target:addLocalEntity(notepad, {
-    label = 'Start Delivery Job',
-    name = 'deliveryJob',
-    icon = 'fa-solid fa-truck-fast',
+  exports.ox_target:addLocalEntity(deliveryManagerPed, {
+    label = 'Claim Money',
+    name = 'Claim Button',
+    icon = 'fa-solid fa-money-bill-transfer',
 
     onSelect = function()
-        toggleNuiFrame(true)
+        TriggerServerEvent('qb-delivery:server:PayPlayer' )
     end
-
   })
 
+
+
   local deliveryVehicleHash = SpawnPedInVehicule()
-  print("deliveryVehicleHash :", deliveryVehicleHash)
+  -- print("deliveryVehicleHash :", deliveryVehicleHash)
 
   
 end)

@@ -33,25 +33,28 @@ Config.DeliveryPlayerVehicle = {
 }
 
 Config.DeliveryAdresses = {
-    {coords = vector3(1922.76, 3915.42, 32.57), label = "Marina Drive", ZipCode ="Los Santos 855"},    -- Exemple de coordonnées
-    {coords = vector3(1523.78, 2218.86, 76.9), label = "Senora Road", ZipCode ="Los Santos 855"},         -- Exemple de coordonnées
-    {coords = vector3(3800.86, 4475.19, 5.99), label = "Catfish View", ZipCode ="Los Santos 999"},   -- Exemple de coordonnées
-    {coords = vector3(3325.95, 5165.81, 18.44), label = "Union Road ", ZipCode ="Los Santos 999"},-- Exemple de coordonnées
-    {coords = vector3(-12.67, 6559.99, 31.97), label = "Paleto Boulevard", ZipCode ="Los Santos 424"}, -- Exemple de coordonnées
-    {coords = vector3(1229.05, -725.46, 60.8), label = "Mirror Park Boulevard", ZipCode ="Los Santos 730"}, -- Exemple de coordonnées
-    {coords = vector3(2221.3, 5614.53, 54.87), label = "O'Neil Way", ZipCode ="Los Santos 999"}, -- Exemple de coordonnées
-    {coords = vector3(-1476.75, 884.8, 182.89), label = "Marlowe Drive", ZipCode ="Los Santos 700"}, -- Exemple de coordonnées
-    {coords = vector3(-3238.03, 952.8, 13.24), label = "Barbareno Road", ZipCode ="Los Santos 999"}, -- Exemple de coordonnées
-    {coords = vector3(-3187.39, 1273.92, 12.67), label = "Barbareno Road 2", ZipCode ="Los Santos 999"}, -- Exemple de coordonnées
-    {coords = vector3(-2976.92, 609.35, 20.25), label = "Inseno Road", ZipCode ="Los Santos 999"}, -- Exemple de coordonnées
-    {coords = vector3(-3089.4, 221.2, 14.12), label = "Inseno Road 2", ZipCode ="Los Santos 999"}, -- Exemple de coordonnées
-    {coords = vector3(-1685.08, -292.13, 51.89), label = "West Eclipse Boulevard", ZipCode ="Los Santos 700"}, -- Exemple de coordonnées
-    {coords = vector3(-1225.49, -1208.03, 8.27), label = "Bay City Avenue", ZipCode ="Los Santos 424"}, -- Exemple de coordonnées 
-    {coords = vector3(-149.81, 281.46, 93.76), label = "Eclipse Boulevard", ZipCode ="Los Santos 700"}, -- Exemple de coordonnées
-    {coords = vector3(-475.21, 585.93, 128.68), label = "Milton Road", ZipCode ="Los Santos 700"}, -- Exemple de coordonnées
-    {coords = vector3(-658.85, 897.68, 229.24), label = "Milton Road 2", ZipCode ="Los Santos 700"}, -- Exemple de coordonnées
-    {coords = vector3(223.37, 514.02, 140.77), label = "Wild Oats Drive", ZipCode ="Los Santos 700"}, -- Exemple de coordonnées    
+    {coords = vector3(-1225.49, -1208.03, 8.27), label = "Bay City Avenue", ZipCode = "Los Santos 424"},
+    {coords = vector3(-12.67, 6559.99, 31.97), label = "Paleto Boulevard", ZipCode = "Los Santos 424"},
+    {coords = vector3(-64.31, -1449.56, 32.52), label = "Forum Drive", ZipCode = "Los Santos 562"},
+    {coords = vector3(-149.81, 281.46, 93.76), label = "Eclipse Boulevard", ZipCode = "Los Santos 700"},
+    {coords = vector3(-1476.75, 884.8, 182.89), label = "Marlowe Drive", ZipCode = "Los Santos 700"},
+    {coords = vector3(-475.21, 585.93, 128.68), label = "Milton Road", ZipCode = "Los Santos 700"},
+    {coords = vector3(-658.85, 897.68, 229.24), label = "Milton Road 2", ZipCode = "Los Santos 700"},
+    {coords = vector3(-1685.08, -292.13, 51.89), label = "West Eclipse Boulevard", ZipCode = "Los Santos 700"},
+    {coords = vector3(223.37, 514.02, 140.77), label = "Wild Oats Drive", ZipCode = "Los Santos 700"},
+    {coords = vector3(1229.05, -725.46, 60.8), label = "Mirror Park Boulevard", ZipCode = "Los Santos 730"},
+    {coords = vector3(1922.76, 3915.42, 32.57), label = "Marina Drive", ZipCode = "Los Santos 855"},
+    {coords = vector3(1523.78, 2218.86, 76.9), label = "Senora Road", ZipCode = "Los Santos 855"},
+    {coords = vector3(2632.74, 3258.57, 55.46), label = "Smoke Tree Road", ZipCode = "Los Santos 855"},
+    {coords = vector3(-3238.03, 952.8, 13.24), label = "Barbareno Road", ZipCode = "Los Santos 999"},
+    {coords = vector3(-3187.39, 1273.92, 12.67), label = "Barbareno Road 2", ZipCode = "Los Santos 999"},
+    {coords = vector3(3800.86, 4475.19, 5.99), label = "Catfish View", ZipCode = "Los Santos 999"},
+    {coords = vector3(-2976.92, 609.35, 20.25), label = "Inseno Road", ZipCode = "Los Santos 999"},
+    {coords = vector3(-3089.4, 221.2, 14.12), label = "Inseno Road 2", ZipCode = "Los Santos 999"},
+    {coords = vector3(2221.3, 5614.53, 54.87), label = "O'Neil Way", ZipCode = "Los Santos 999"},
+    {coords = vector3(3325.95, 5165.81, 18.44), label = "Union Road", ZipCode = "Los Santos 999"},
 }
+
 
 
 -- Détecte automatiquement l'inventaire utilisé (ox_inventory ou qb-inventory)

@@ -19,6 +19,7 @@ Delivery Script:
         -- Change Player OnJob Status to InTransit 
     
     3-After mission start  
+        -- Add Blip on the map for the delivery location
         -- Spawn the players in the delivery vehicle ✅ @done
         -- Order the delivery locations by the nearest @done
         -- Set the 1st delivery location @done
@@ -32,10 +33,11 @@ Delivery Script:
             -- store in DB one instance of money earned (every delevrycompleted : old + moneyGained) @done
             -- customize animation (/e box) back of the vehicle @done
             -- show a circle target for delivery @done
-            -- fetch delivery locations
+            -- fetch delivery locations @done
+            -- select from locations 10 random ones 
             -- link UI w/ the job 
             -- mission multiplayer?
-            -- popup UI to confirm the delivery
+            -- popup UI to go delivery /confirm the delivery /send message 
             -- store money gained Money in DB @done
             -- set the next delivery location zone 2 .... & repeat @done
         -- When Finished Get Bonus Money From Ped
