@@ -1,11 +1,13 @@
+import { useState, useEffect } from "react"
 import profilepic from "../images/imagecopy6.png"
 import logoGoMini from "../images/imagecopy7.png"
+import { fetchNui } from "../utils/fetchNui"
 
 import "./App.css"
-import "./Options.css"
 import "./DeliveryStats"
 import "./deliveryStats.css"
 import "./Options"
+import "./Options.css"
 import "./PlayersLobby"
 import "./playersLobby.css"
 
@@ -22,14 +24,14 @@ interface PlayerContainerProps {
     player: Player;
 }
 
-const players: Player[] = [
-    { id: 1, playerState: "Ready", time: "01:22:20", image: profilepic, image2: logoGoMini },
-    { id: 2, playerState: "Ready", time: "01:22:20" , image: profilepic, image2: logoGoMini  },
-    { id: 3, playerState: "lobby", time: "01:22:20", image: profilepic, image2: logoGoMini  },
-    { id: 3, playerState: "lobby", time: "01:22:20" , image: profilepic, image2: logoGoMini },
-    { id: 3, playerState: "AFK", time: "01:22:20", image: profilepic, image2: logoGoMini  },
-    { id: 3, playerState: "lobby", time: "01:22:20" , image: profilepic, image2: logoGoMini },
-];
+// const players: Player[] = [
+//     { id: 1, playerState: "Ready", time: "01:22:20", image: profilepic, image2: logoGoMini },
+//     { id: 2, playerState: "Ready", time: "01:22:20" , image: profilepic, image2: logoGoMini  },
+//     { id: 3, playerState: "lobby", time: "01:22:20", image: profilepic, image2: logoGoMini  },
+//     { id: 3, playerState: "lobby", time: "01:22:20" , image: profilepic, image2: logoGoMini },
+//     { id: 3, playerState: "AFK", time: "01:22:20", image: profilepic, image2: logoGoMini  },
+//     { id: 3, playerState: "lobby", time: "01:22:20" , image: profilepic, image2: logoGoMini },
+// ];
   
   
   
@@ -44,9 +46,9 @@ const PlayerContainer: React.FC<PlayerContainerProps> = ({ player }) => (
       <div className="playertime">{player.time}</div>
       
       <div className="profiLogo2">
-      <img className="profileLogo2" src={player.image2} />
+      <img className="profileLogo2" src={logoGoMini} />
       </div>
-      <img className="profiLogo" src={player.image} />
+      <img className="profiLogo" src={profilepic} />
       <h1 className="PlayerName">Atiysu Dev</h1>
       <p className="noIdea">Personal</p>
       <div className="level">
@@ -60,9 +62,31 @@ const PlayerContainer: React.FC<PlayerContainerProps> = ({ player }) => (
 
 
 const PlayersLobby: React.FC = () => {
+    const [connectedPlayers, setconnectedPlayers] = useState<Player[]>([]);
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const rawData = await fetchNui<Player[]>("connectedPlayers", {});
+            setconnectedPlayers(rawData);
+          } catch (error) {
+            console.error("Error fetching player stats:", error);
+            // Données statiques de secours pour le débogage dans le navigateur
+            const players: Player[] = [
+                { id: 1, playerState: "Ready", time: "01:22:20", image: profilepic, image2: logoGoMini },
+                { id: 2, playerState: "Ready", time: "01:22:20" , image: profilepic, image2: logoGoMini  },
+                { id: 3, playerState: "lobby", time: "01:22:20", image: profilepic, image2: logoGoMini  },
+                { id: 3, playerState: "lobby", time: "01:22:20" , image: profilepic, image2: logoGoMini },
+                { id: 3, playerState: "AFK", time: "01:22:20", image: profilepic, image2: logoGoMini  },
+                { id: 3, playerState: "lobby", time: "01:22:20" , image: profilepic, image2: logoGoMini },
+            ];
+            setconnectedPlayers(players);
+          }
+        };
+        fetchData();
+      }, []);
     return (
         <div className="Playersframe">
-            {players.map((player) => (
+            {connectedPlayers.map((player) => (
                 <PlayerContainer key={player.id} player={player} />
             ))}
         </div>

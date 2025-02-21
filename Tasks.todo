@@ -6,10 +6,9 @@
 
 
 Delivery Script: 
-    1-Ped Intraction
+    -Ped Intraction @done
         -- StartJob {UI Animation show} ✅ @done
-            -- FinishJob Automaticly when return vehicle
-        -- Claim money {fetch DB & Pay the player/s}  (if player>1 each player can claim money independently)
+        -- Claim money {fetch DB & Pay the player/s}  (if player>1 each player can claim money independently) @done
     
     2-UI Animation & Lobby invite + StartJob (/!\ Job != Mission)
         -- In order to invite friends to the lobby, the players need to start the Job 
@@ -34,21 +33,35 @@ Delivery Script:
             -- customize animation (/e box) back of the vehicle @done
             -- show a circle target for delivery @done
             -- fetch delivery locations @done
-            -- select from locations 10 random ones 
+            -- select from locations 10 random ones @done
             -- link UI w/ the job 
             -- mission multiplayer?
             -- popup UI to go delivery /confirm the delivery /send message 
             -- store money gained Money in DB @done
             -- set the next delivery location zone 2 .... & repeat @done
         -- When Finished Get Bonus Money From Ped
-            -- return vehicle to get bonus money
+            -- return vehicle to claim your money
             -- store bonus money in DB
             -- set mission status on Off
-        -- Claim your money
-            -- Interaction with the ped    
-            -- Pay the player & delete money from DB
+        -- Claim your money @done
+            -- Interaction with the ped @done
+            -- Pay the player & delete money from DB @done
     
     
     //Bonus
     -- Make custom uniform for delivery job 
     -- Make custom vehicle for delivery job
+
+
+-- ToDO 20/02 :
+        -- How to set a lobby system
+        -- How to Use State in react
+        -- How to 
+-- ToDo 21/02 :
+        -- link UI w/ the job
+        -- Popup UI to go delivery /confirm the delivery /send message
+        -- Add Blib on the map for the delivery
+        -- Start Lobby System
+        -- Discord For Artemis 
+        -- On vehicle warnings
+        

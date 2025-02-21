@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { VisibilityProvider } from './providers/VisibilityProvider';
+import { useState, useEffect } from 'react';
 import App from './components/App';
 import './index.css';
 

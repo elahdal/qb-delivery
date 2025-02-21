@@ -12,6 +12,10 @@ import logoGoMini from "../images/imagecopy7.png"
 import trucPic from "../images/imagecopy8.png"
 import logoDelivery from "../images/imagecopy9.png"
 
+import { fetchNui } from "../utils/fetchNui"
+import { useState, useEffect } from "react";
+
+
 
 interface PlayerStats {
     startAddress: string;
@@ -29,22 +33,74 @@ interface PlayerStatsProps {
 }
 
 // here fetchNui and fill this data
-const playerStats : PlayerStats[] = [{
-    startAddress: "4656 West Wood",
-    startAdressZip: " Los Santos 24562",
-    deliveryAddress: "2378 Grase",
-    deliveryAdressZip: "Los Santos 4362",
-    name: "Atiysu Dev",
-    status: "In transit",
-    dailyDeliveryNb: 4,
-    progression: 75
-}]
+const playerStats : PlayerStats[] = []
+
+// Replace the static data with a dynamic fetch using React hooks.
+// const [playerStats, setPlayerStats] = useState<PlayerStats[]>([]);
+// useEffect(() => {
+//   const fetchData = async () => {
+//     try {
+//       console.log("Fetching player stats...");
+//       const data = (await fetchNui("getPlayerStats", {})) as PlayerStats[];
+//       console.log("Fetched data:", data);
+//       setPlayerStats(data);
+//     } catch (error) {
+//       console.error("Error fetching player stats:", error);
+//       // Données statiques de secours pour le débogage dans le navigateur
+//       const data: PlayerStats[] = [{
+//         startAddress: "4656 West Wood",
+//         startAdressZip: "Los Santos 24562",
+//         deliveryAddress: "2378 Grase",
+//         deliveryAdressZip: "Los Santos 4362",
+//         name: "Atiysu Dev",
+//         status: "In transit",
+//         dailyDeliveryNb: 4,
+//         progression: 75 
+//       }];
+//       setPlayerStats(data);
+//     }
+//   };
+
+//   fetchData();
+// }, []);
 
 
+const handleMissionStart = async () => {
+  try {
+    await fetchNui("Start", { start: true });
+    console.debug("Mission démarrée avec succès.");
+  } catch (error) {
+    console.error("Erreur lors du démarrage de la mission :", error);
+  }
+}
 
-const DeliveryStats:React.FC<PlayerStatsProps> = ({playerStats}) => {
+const DeliveryStats:React.FC<PlayerStatsProps> = () => {
+
+  const [playerStats, setPlayerStats] = useState<PlayerStats[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const rawData = await fetchNui<PlayerStats[]>("getPlayerStats", {});
+        setPlayerStats(rawData);
+      } catch (error) {
+        console.error("Error fetching player stats:", error);
+        // Données statiques de secours pour le débogage dans le navigateur
+        const data: PlayerStats[] = [{
+          startAddress: "4656 West Wood",
+          startAdressZip: "Los Santos 24562",
+          deliveryAddress: "2378 Grase",
+          deliveryAdressZip: "Los Santos 4362",
+          name: "Artemis Dev",
+          status: "In transit",
+          dailyDeliveryNb: 4,
+          progression: 75 
+        }];
+        setPlayerStats(data);
+      }
+    };
+    fetchData();
+  }, []);
     return (
-        
         <div className="deliveryFrame">
         <div className="trucLayaout">
           <img className="imgTruc" src={trucPic} width="471.5px"  />
@@ -66,8 +122,8 @@ const DeliveryStats:React.FC<PlayerStatsProps> = ({playerStats}) => {
                 <div className="profiLogo2"><img className="profileLogo2" src={logoGoMini}/></div>
                 <img className="profiLogo" src={profilepic} />
                 <p className="noIdea2">Personal</p>
-                <h1 className="PlayerName2">{playerStats.name}</h1>
-                <div className="deliveryStatus"><p className="dStatus">{playerStats.status}</p></div>
+                <h1 className="PlayerName2">{playerStats[0]?.name}</h1>
+                <div className="deliveryStatus"><p className="dStatus">{playerStats[0]?.status}</p></div>
                 <div className="fromToAdresses">
                   <div className="line"></div>
                   <p className="from">From</p>
@@ -76,14 +132,14 @@ const DeliveryStats:React.FC<PlayerStatsProps> = ({playerStats}) => {
                   <div className="startAdr">
                       <div className="startAdress">
                         <p className="startAdress">
-                          <span style={{color: '#FFFFFF'}}>{playerStats.startAddress},</span>
-                          <span style={{color: '#c6c6c6'}}>{playerStats.startAdressZip}</span>
+                          <span style={{color: '#FFFFFF'}}>{playerStats[0]?.startAddress},</span>
+                          <span style={{color: '#c6c6c6'}}> {playerStats[0]?.startAdressZip}</span>
                         </p>
                       </div> 
                       <div className="deliveryAdressA">
                         <p className="deliveryAdressA">
-                          <span style={{color: '#FFFFFF'}}>{playerStats.deliveryAddress},</span>
-                          <span style={{color: '#c6c6c6'}}> {playerStats.deliveryAdressZip}</span>
+                          <span style={{color: '#FFFFFF'}}>{playerStats[0]?.deliveryAddress},</span>
+                          <span style={{color: '#c6c6c6'}}> {playerStats[0]?.deliveryAdressZip}</span>
                         </p>
                       </div> 
                   </div>
@@ -94,12 +150,12 @@ const DeliveryStats:React.FC<PlayerStatsProps> = ({playerStats}) => {
           </div>
           <div className="progressBar">
             <p className="daily">DAILY MISSION</p>
-            <p className="missionPerc"><span style={{color: '#5AFFE7'}}>{playerStats.progression}</span><span style={{color: '#c6c6c6'}}> %</span></p>
-            <p className="deliverCount"><span style={{color: '#5AFFE7'}}>Deliver</span><span style={{color: '#c6c6c6'}}> {playerStats.dailyDeliveryNb} Times</span></p>
+            <p className="missionPerc"><span style={{color: '#5AFFE7'}}>{playerStats[0]?.progression}</span><span style={{color: '#c6c6c6'}}> %</span></p>
+            <p className="deliverCount"><span style={{color: '#5AFFE7'}}>Deliver</span><span style={{color: '#c6c6c6'}}> {playerStats[0]?.dailyDeliveryNb} Times</span></p>
   
             <div className='container'><div className='bar'></div><div className="emptyBar"></div></div>
           </div>
-          <button className="startB">Start</button>
+          <button className="startB" onClick={() => handleMissionStart()}>Start</button>
         </div>
   
         </div>

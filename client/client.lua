@@ -265,7 +265,7 @@ Citizen.CreateThread(function()
 
 
 
-  local deliveryVehicleHash = SpawnPedInVehicule()
+  -- local deliveryVehicleHash = SpawnPedInVehicule()
   -- print("deliveryVehicleHash :", deliveryVehicleHash)
 
   
@@ -303,13 +303,43 @@ RegisterCommand("ox", function()
   clearBoxAnimation()
 end, false)
 
+RegisterNetEvent('qb-delivery:client:Start')
+AddEventHandler('qb-delivery:client:Start', function()
+  SpawnPedInVehicule()
+  print("Start Event")
+end)
 
+RegisterNUICallback('getPlayerStats', function(data, cb)
+  local playerStats = {
+    {
+      startAddress = "4656 West Wood",
+      startAdressZip = "Los Santos 24562",
+      deliveryAddress = "2378 Grase",
+      deliveryAdressZip = "Los Santos 4362",
+      name = "Artemis Dev Team",
+      status = "In transit",
+      dailyDeliveryNb = 4,
+      progression = 75
+    }
+  }
+  cb(playerStats)
+end)
 
-
+RegisterNUICallback('connectedPlayers', function(data, cb)
+  local playerStats = 
+    {    
+      { id = 1, playerState = "Ready", time = "00:00:00", image = profilepic, image2 = logoGoMini },
+      { id = 2, playerState = "Ready", time = "01:22:20", image = profilepic, image2 = logoGoMini },
+      { id = 3, playerState = "lobby", time = "01:22:20", image = profilepic, image2 = logoGoMini },
+      { id = 3, playerState = "lobby", time = "01:22:20", image = profilepic, image2 = logoGoMini },
+      { id = 3, playerState = "AFK", time = "01:22:20", image = profilepic, image2 = logoGoMini },
+      { id = 3, playerState = "lobby", time = "01:22:20", image = profilepic, image2 = logoGoMini },
+    }
+  cb(playerStats)
+end)
 
 
 -- ========================= Show UI =========================
-
 RegisterCommand('show-nui', function()
   toggleNuiFrame(true)
   debugPrint('Show NUI frame')
@@ -321,13 +351,20 @@ RegisterNUICallback('hideFrame', function(_, cb)
   cb({})
 end)
 
+RegisterNuiCallback('Start', function(data, cb)
+  toggleNuiFrame(false)
+  Citizen.Wait(100)
+  -- pense ici a ajouter une cinematique 
+  SpawnPedInVehicule()
+  cb({})
+end)
 
 
 
 -- ========================== Ressources ==========================
 AddEventHandler('onResourceStart', function(resourceName)
   if (GetCurrentResourceName() ~= resourceName) then
-      return     
+      return    
   end
   DeleteEntity(deliveryManagerPed)
   DeleteEntity(notepad)
