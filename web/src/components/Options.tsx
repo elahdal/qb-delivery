@@ -6,16 +6,44 @@ import "./Options"
 import "./PlayersLobby"
 import "./playersLobby.css"
 
+// Removed react-native import as it is not used in this web app.
 import image from "../images/image.png"
 import logoPostal from "../images/imagecopy.png"
 import Gotext from "../images/imagecopy2.png"
 import image2 from "../images/imagecopy3.png"
 import LogoPostOp from "../images/imagecopy4.png"
 import PostOpText from "../images/imagecopy5.png"
+import { useState } from "react"
 
-
+const handleSelectOption = (option: string) => {
+    console.log("Selected option", option);
+}
 
 const Options:React.FC = () => {
+  const [isPressed, setIsPressed] = useState(false);  // État pour savoir si le bouton est enfoncé
+  const [isPressed2, setIsPressed2] = useState(false);  // État pour savoir si le bouton est enfoncé
+  const [isPressed3, setIsPressed3] = useState(false);  // État pour savoir si le bouton est enfoncé
+
+  const handlePress = (option: string) => {
+    setIsPressed2(false);  // Inverser l'état à chaque pression
+    setIsPressed3(false);  // Inverser l'état à chaque pression
+    setIsPressed(!isPressed);  // Inverser l'état à chaque pression
+    handleSelectOption(option);
+  };
+  const handlePress2 = (option: string) => {
+    setIsPressed3(false);  // Inverser l'état à chaque pression
+    setIsPressed(false);  // Inverser l'état à chaque pression
+
+    setIsPressed2(!isPressed2);  // Inverser l'état à chaque pression
+    handleSelectOption(option);
+  };
+  const handlePress3 = (option: string) => {
+    setIsPressed3(!isPressed3);  // Inverser l'état à chaque pression
+    setIsPressed2(false);  // Inverser l'état à chaque pression
+    setIsPressed(false);  // Inverser l'état à chaque pression
+
+    handleSelectOption(option);
+  };
 return (
 
     <div className="Optionsframe">
@@ -42,11 +70,10 @@ return (
           <p className="PlayerReqText">4</p>
         </div>
       </div>
-
       <div className="missionText">
       <p className="textholderMission"> elit. Nunc vulputate libero et velit interduı aliquet odio matti consectetur adipis. Forem ipsum dolor sit amet, consectetur adipis cing elit. Nunc vulputate libero et velit interduı aliquet odio matti consectetur adipis</p>
       </div>
-      <button className="ButtonSelect">Select</button>
+      <button className="ButtonSelect" onClick={() => handlePress("solo")} style={{ backgroundColor: isPressed ? '#a4a4a4' : '#ddd' }}>Select</button>
     </div>
 
     <div className="choice2frame">
@@ -73,7 +100,7 @@ return (
       <div className="missionText">
       <p className="textholderMission"> elit. Nunc vulputate libero et velit interduı aliquet odio matti consectetur adipis. Forem ipsum dolor sit amet, consectetur adipis cing elit. Nunc vulputate libero et velit interduı aliquet odio matti consectetur adipis</p>
       </div>
-      <button className="ButtonSelect">Select</button>
+      <button className="ButtonSelect" onClick={() => handlePress2("duo")} style={{ backgroundColor: isPressed2 ? '#a4a4a4' : '#ddd' }}>Select</button>
     </div>
 
     <div className="choice3frame">
@@ -100,7 +127,7 @@ return (
       <div className="missionText">
       <p className="textholderMission"> elit. Nunc vulputate libero et velit interduı aliquet odio matti consectetur adipis. Forem ipsum dolor sit amet, consectetur adipis cing elit. Nunc vulputate libero et velit interduı aliquet odio matti consectetur adipis</p>
       </div>
-      <button className="ButtonSelect">Select</button>
+      <button className="ButtonSelect" onClick={() => handlePress3("squad")} style={{ backgroundColor: isPressed3 ? '#a4a4a4' : '#ddd' }}>Select</button>
     </div>
   </div>
 

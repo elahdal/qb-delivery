@@ -22,18 +22,7 @@ interface Player {
   
 interface PlayerContainerProps {
     player: Player;
-}
-
-// const players: Player[] = [
-//     { id: 1, playerState: "Ready", time: "01:22:20", image: profilepic, image2: logoGoMini },
-//     { id: 2, playerState: "Ready", time: "01:22:20" , image: profilepic, image2: logoGoMini  },
-//     { id: 3, playerState: "lobby", time: "01:22:20", image: profilepic, image2: logoGoMini  },
-//     { id: 3, playerState: "lobby", time: "01:22:20" , image: profilepic, image2: logoGoMini },
-//     { id: 3, playerState: "AFK", time: "01:22:20", image: profilepic, image2: logoGoMini  },
-//     { id: 3, playerState: "lobby", time: "01:22:20" , image: profilepic, image2: logoGoMini },
-// ];
-  
-  
+}  
   
 const PlayerContainer: React.FC<PlayerContainerProps> = ({ player }) => (
     <div className="playercontainer">
