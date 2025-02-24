@@ -14,6 +14,20 @@
             "database": "qbcoreframework_945de8",
             "name": "SQLfimeM",
             "password": ""
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "MySQL_",
+            "username": "root",
+            "database": "qbcoreframework_aa4d39",
+            "password": ""
         }
     ]
 }

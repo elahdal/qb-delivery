@@ -1,7 +1,5 @@
 .rootframe{
-    position: absolute;
-    justify-content: center;
-    align-items: center;   
-    left: -30%;
-    top: -1%;
+    position: relative;
+    margin-top: 0%;
+    margin-left: -15%;
 }

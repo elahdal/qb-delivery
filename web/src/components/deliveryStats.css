@@ -3,12 +3,12 @@
 
 .deliveryFrame {
     position: absolute;
-    width: 469px;
-    height: 860px;
-    left: 1777px;
-    top: 142px;
+    width: 29.3125em;
+    height: 53.75em;
+    left: 111.0625em;
+    top: 8.875em;
     background: radial-gradient(50% 50% at 50% 50%, rgba(102, 102, 102, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
-    border-radius: 20px;
+    border-radius: 1.25em;
     overflow: hidden;
     position: relative;
 }

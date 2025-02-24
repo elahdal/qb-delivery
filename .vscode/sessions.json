@@ -49,7 +49,7 @@
                 "name": "CFX Server",
                 "cwd": "C:\\Users\\elahd\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_945DE8.base\\resources\\[qb]\\qb-delivery\\web",
                 "commands": [
-                    "C:\\Users\\elahd\\Documents\\Code\\FiveM\\Artifacts\\FXServer.exe + exec"
+                    "C:\\Users\\elahd\\OneDrive\\Documents\\Code\\FiveM\\Artifacts\\FXServer.exe + exec"
                 ]
             },
             [
@@ -57,14 +57,14 @@
                     "name": "web",
                     "cwd": "C:\\Users\\elahd\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_945DE8.base\\resources\\[qb]\\qb-delivery\\web",
                     "commands": [
-                        " cd C://Users//elahd//Documents//Code//FiveM//txData//QBCoreFramework_945DE8.base//resources//'.\\`[qb`]\\'//qb-delivery\\web"
+                        "cd C:\\Users\\elahd\\OneDrive\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_AA4D39.base\\resources\\``[qb``]\\qb-delivery\\web"
                     ]
                 },
                 {
                     "name": "web deploy",
                     "cwd": "C:\\Users\\elahd\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_945DE8.base\\resources\\[qb]\\qb-delivery\\web",
                     "commands": [
-                        " cd C://Users//elahd//Documents//Code//FiveM//txData//QBCoreFramework_945DE8.base//resources//'.\\`[qb`]\\'//qb-delivery\\web"
+                        "cd C:\\Users\\elahd\\OneDrive\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_AA4D39.base\\resources\\``[qb``]\\qb-delivery\\web"
                     ]
                 }
             ],
@@ -72,7 +72,7 @@
                 "name": "Git",
                 "cwd": "C:\\Users\\elahd\\OneDrive\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_AA4D39.base\\resources\\[qb]\\qb-delivery\\web",
                 "commands": [
-                    " cd C://Users//elahd//Documents//Code//FiveM//txData//QBCoreFramework_945DE8.base//resources//'.\\`[qb`]\\'//qb-delivery"
+                    "cd C:\\Users\\elahd\\OneDrive\\Documents\\Code\\FiveM\\txData\\QBCoreFramework_AA4D39.base\\resources\\``[qb``]\\qb-delivery"
                 ]
             }
         ]

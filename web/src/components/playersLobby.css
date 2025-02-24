@@ -6,19 +6,19 @@ body {
 
 
 .Playersframe {
-    left: 887px;
-    top: 611px;
+    left: 55.438em;
+    top: 38.188em;
     position: absolute;
-    width: 873px;
-    height: 383px; /* Permet le scroll si nécessaire */
-    margin: 7px;
+    width: 54.563em;
+    height: 23.938em; /* Permet le scroll si nécessaire */
+    margin: 0.438em;
     background: radial-gradient(50% 50% at 50% 50%, rgba(102, 102, 102, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
-    border-radius: 15px;
+    border-radius: 0.938em;
     overflow-y: scroll; 
     scrollbar-width: none; 
 }
 
-    /* Masquer la scrollbar sur Chrome, Edge et Safari */
+/* Masquer la scrollbar sur Chrome, Edge et Safari */
 .Playersframe::-webkit-scrollbar {
     display: none;
 }
