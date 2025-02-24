@@ -33,15 +33,16 @@ const InnerApp: React.FC = () => {
   const { isPressed, isPressed2, isPressed3 } = context;
 
   return (
-    <div className="rootframe">
+    <div className="rootframe" style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '20px'
+    }}>
       <Options/>
       <PlayersLobby/>
       <DeliveryStatsData/>
-      <div>
-        <p>isPresfrrrrreeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerrrrrrrrsed: {isPressed ? "true" : "false"}</p>
-        <p>isPreseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeesed2: {isPressed2 ? "true" : "false"}</p>
-        <p>isPressedeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee3: {isPressed3 ? "true" : "false"}</p>
-      </div>
+      <div className="test"></div>
     </div>
   );
 };

@@ -6,8 +6,8 @@ body {
 
 
 .Playersframe {
-    left: 55.438em;
-    top: 38.188em;
+    /* left: 55.438em;
+    top: 38.188em; */
     position: absolute;
     width: 54.563em;
     height: 23.938em; /* Permet le scroll si nécessaire */
@@ -16,6 +16,7 @@ body {
     border-radius: 0.938em;
     overflow-y: scroll; 
     scrollbar-width: none; 
+    background-color: green;
 }
 
 /* Masquer la scrollbar sur Chrome, Edge et Safari */
