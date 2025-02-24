@@ -33,16 +33,10 @@ const InnerApp: React.FC = () => {
   const { isPressed, isPressed2, isPressed3 } = context;
 
   return (
-    <div className="rootframe" style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '20px'
-    }}>
+    <div className="rootframe">
       <Options/>
       <PlayersLobby/>
       <DeliveryStatsData/>
-      <div className="test"></div>
     </div>
   );
 };

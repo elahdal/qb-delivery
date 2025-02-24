@@ -5,16 +5,15 @@
 
 /* Rectangle 14 */
 position: absolute;
-/* width: 873px;
-height: 455px; */
-margin: 7px;
+width: 873px;
+height: 455px;
+margin-top: 250px;
+margin-left: 610px;  
 background: radial-gradient(50% 50% at 50% 50%, rgba(102, 102, 102, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
 border-radius: 15px;
 /* left: 887px;
 top: 140px; */
 background-color: red;
-
-
 }
 
 .designframe1{
