@@ -7,22 +7,26 @@ import "./PlayersLobby"
 import "./playersLobby.css"
 
 // Removed react-native import as it is not used in this web app.
+import { OptionsContext } from "../components/Optioncontext";
 import image from "../images/image.png"
 import logoPostal from "../images/imagecopy.png"
 import Gotext from "../images/imagecopy2.png"
 import image2 from "../images/imagecopy3.png"
 import LogoPostOp from "../images/imagecopy4.png"
 import PostOpText from "../images/imagecopy5.png"
-import { useState } from "react"
+import { useState, useContext } from "react"
 
 const handleSelectOption = (option: string) => {
     console.log("Selected option", option);
 }
 
 const Options:React.FC = () => {
-  const [isPressed, setIsPressed] = useState(false);  // État pour savoir si le bouton est enfoncé
-  const [isPressed2, setIsPressed2] = useState(false);  // État pour savoir si le bouton est enfoncé
-  const [isPressed3, setIsPressed3] = useState(false);  // État pour savoir si le bouton est enfoncé
+
+  const context = useContext(OptionsContext);
+  if (!context) {
+    throw new Error("OptionsContext non trouvé");
+  }
+  const { isPressed, isPressed2, isPressed3, setIsPressed, setIsPressed2, setIsPressed3 } = context;
 
   const handlePress = (option: string) => {
     setIsPressed2(false);  // Inverser l'état à chaque pression

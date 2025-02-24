@@ -240,10 +240,30 @@ local function SpawnPedInVehicule()
   return vehicle
 end
 
+local function createDeliveryBlip(x, y, z, label, iconSprite)
+  -- Utilise par défaut l'icone "fa-solid fa-truck-fast" et la remplace par son sprite (ici : 477, à ajuster selon vos besoins)
+  iconSprite = iconSprite or "fa-solid fa-truck-fast"
+  if type(iconSprite) == "string" and iconSprite == "fa-solid fa-truck-fast" then
+      iconSprite = 616
+  end
+
+  local blip = AddBlipForCoord(x, y, z)
+  SetBlipSprite(blip, iconSprite)
+  SetBlipDisplay(blip, 2)
+  SetBlipScale(blip, 0.7)
+  SetBlipColour(blip, 2)
+  
+  BeginTextCommandSetBlipName("STRING")
+  AddTextComponentString(label or "Delivery")
+  EndTextCommandSetBlipName(blip)
+  
+  return blip
+end
+
 Citizen.CreateThread(function()
   SpawnDeliveryManager()
   SpawnDeliveryVehicules()
-
+  local blip = createDeliveryBlip(-396.14, -2775.92, 6.0, "Delivery Job")
   exports.ox_target:addLocalEntity(deliveryManagerPed, {
     label = 'Start Delivery Job',
     name = 'deliveryJob',
@@ -337,6 +357,8 @@ RegisterNUICallback('connectedPlayers', function(data, cb)
     }
   cb(playerStats)
 end)
+
+
 
 
 -- ========================= Show UI =========================
