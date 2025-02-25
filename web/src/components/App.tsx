@@ -34,9 +34,11 @@ const InnerApp: React.FC = () => {
 
   return (
     <div className="rootframe">
-      <Options/>
-      <PlayersLobby/>
-      <DeliveryStatsData/>
+      <div className="cont">
+        <Options/>
+        <PlayersLobby/>
+        <DeliveryStatsData/>
+      </div>
     </div>
   );
 };

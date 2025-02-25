@@ -4,15 +4,15 @@
 .Optionsframe{
 
 /* Rectangle 14 */
+left: 370px;
+top: 210px;
 position: absolute;
 width: 873px;
 height: 455px;
-margin-top: 9.7%;
-margin-left: 24%;  
+/* margin-top: 9.7%;
+margin-left: 24%;   */
 background: radial-gradient(50% 50% at 50% 50%, rgba(102, 102, 102, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
 border-radius: 15px;
-/* left: 887px;
-top: 140px; */
 background-color: red;
 }
 
@@ -29,9 +29,6 @@ margin: 15px;
 background: linear-gradient(270deg, rgba(255, 255, 255, 0.12) 0%, rgba(153, 153, 153, 0) 29.18%);
 border-radius: 11px;
 transform: matrix(-1, 0, 0, 1, 0, 0);
-
-
-
 
 }
 

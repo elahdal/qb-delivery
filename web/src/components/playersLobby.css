@@ -6,13 +6,13 @@ body {
 
 
 .Playersframe {
-    /* left: 55.438em;
-    top: 38.188em; */
+    left: 370px;
+    top: 680px;
     position: absolute;
     width: 54.563em;
     height: 23.938em; /* Permet le scroll si nécessaire */
-    margin-top: 28.3%;
-    margin-left: 24%;  
+    /* margin-top: 28.3%;
+    margin-left: 24%;   */
     background: radial-gradient(50% 50% at 50% 50%, rgba(102, 102, 102, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
     border-radius: 0.938em;
     overflow-y: scroll; 
