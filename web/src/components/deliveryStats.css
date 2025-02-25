@@ -13,7 +13,7 @@
     background: radial-gradient(50% 50% at 50% 50%, rgba(102, 102, 102, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
     border-radius: 1.25em;
     overflow: hidden;
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 .deliveryFrame::before {
