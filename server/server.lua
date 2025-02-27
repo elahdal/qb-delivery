@@ -71,13 +71,14 @@ AddEventHandler('qb-delivery:server:UpdateDB', function(bonus)
     end)
 end)
 
+
+
 RegisterNetEvent('qb-delivery:server:CreateLobby')
 AddEventHandler('qb-delivery:server:CreateLobby', function(lobbyname)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local lobbyId = #lobbies + 1
     lobbies[lobbyId] = {
-        id = lobbyId,
         name = lobbyname,
         players = {[src] = Player},
         active = false
@@ -88,7 +89,20 @@ RegisterNetEvent('qb-delivery:server:JoinLobby')
 AddEventHandler('qb-delivery:server:JoinLobby', function(lobbyId)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-   
+    if lobbies[lobbyId] then 
+        lobbies[lobbyId].players[src] = Player
+        print("Welcome player to lobby named" ,lobbies[lobbyId].name, "players =" ,lobbies[lobbyId].players,"state : ",lobbies[lobbyId].active)
+    end
+end)
 
-
+RegisterNetEvent('qb-delivery:server:LeaveLobby')
+AddEventHandler('qb-delivery:server:LeaveLobby', function()
+    local src = source
+    for lobbyId, lobbyBoucle in pairs(lobbies) do
+        if lobbyBoucle.players[src] then
+            lobbyBoucle.players[src] = nil
+            print("Joueur quitté du lobby ID:", lobbyId) 
+            break
+        end
+    end
 end)
