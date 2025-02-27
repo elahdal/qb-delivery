@@ -311,13 +311,10 @@ Citizen.CreateThread(function()
     end
   })
 
-
-
   -- local deliveryVehicleHash = SpawnPedInVehicule()
   -- print("deliveryVehicleHash :", deliveryVehicleHash)
-
-  
 end)
+
 
 
 triggerBoxAnimation = function()
@@ -374,8 +371,7 @@ RegisterNUICallback('getPlayerStats', function(data, cb)
 end)
 
 RegisterNUICallback('connectedPlayers', function(data, cb)
-  local playerStats = 
-    {    
+  local playerStats = {    
       { id = 1, playerState = "Ready", time = "00:00:00", image = profilepic, image2 = logoGoMini },
       { id = 2, playerState = "Ready", time = "01:22:20", image = profilepic, image2 = logoGoMini },
       { id = 3, playerState = "lobby", time = "01:22:20", image = profilepic, image2 = logoGoMini },
@@ -386,11 +382,24 @@ RegisterNUICallback('connectedPlayers', function(data, cb)
   cb(playerStats)
 end)
 
+-- ========================= Lobby =========================
 RegisterNetEvent('qb-delivery:client:CreateLobby')
 AddEventHandler('qb-delivery:client:CreateLobby', function(lobbyname)
-  
   TriggerServerEvent('qb-delivery:client:CreateLobby', lobbyname)
 end)
+
+RegisterNetEvent('qb-delivery:client:JoinLobby')
+AddEventHandler('qb-delivery:client:JoinLobby', function(lobbyId)
+  TriggerServerEvent('qb-delivery:client:JoinLobby', lobbyId)
+end)
+
+RegisterNetEvent('qb-delivery:client:LeaveLobby')
+AddEventHandler('qb-delivery:client:LeaveLobby', function()
+  TriggerServerEvent('qb-delivery:client:LeaveLobby')
+end)
+
+
+
 
 -- ========================= Show UI =========================
 RegisterCommand('show-nui', function()

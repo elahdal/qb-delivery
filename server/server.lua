@@ -83,3 +83,12 @@ AddEventHandler('qb-delivery:server:CreateLobby', function(lobbyname)
         active = false
     }
 end)
+
+RegisterNetEvent('qb-delivery:server:JoinLobby')
+AddEventHandler('qb-delivery:server:JoinLobby', function(lobbyId)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+   
+
+
+end)
