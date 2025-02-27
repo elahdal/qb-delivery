@@ -260,10 +260,29 @@ local function createDeliveryBlip(x, y, z, label, iconSprite)
   return blip
 end
 
+local function GetNearestPlayers()
+  local Squad = {}
+  local playerPed = GetClosestPedToPlayer()
+  local nearestPlayerId = GetPlayerServerId(NetworkGetPlayerIndexFromPed(playerPed))
+  local nearestPlayerName = GetPlayerName(nearestPlayerId)
+
+  return Squad
+end
+
+local function test()
+  local Player = QBCore.Functions.GetPlayerData()
+  local charName = Player.charinfo.firstname .. " " .. Player.charinfo.lastname
+  local inGameId = GetPlayerServerId(PlayerId())
+  print("charName hahaha:", charName)
+  print("Player ID:", inGameId)
+  print("Character Name:", charName)
+end
+
 Citizen.CreateThread(function()
   SpawnDeliveryManager()
   SpawnDeliveryVehicules()
   local blip = createDeliveryBlip(-396.14, -2775.92, 6.0, "Delivery Job")
+  test()
   exports.ox_target:addLocalEntity(deliveryManagerPed, {
     label = 'Start Delivery Job',
     name = 'deliveryJob',
