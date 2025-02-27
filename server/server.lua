@@ -1,5 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local cfg = Config
+local lobbies = {}
 
 RegisterNetEvent('qb-delivery:server:PayPlayer')
 AddEventHandler('qb-delivery:server:PayPlayer', function()
@@ -68,4 +69,17 @@ AddEventHandler('qb-delivery:server:UpdateDB', function(bonus)
             print("[DEBUG] Database update executed. Affected rows: " .. tostring(affectedRows))
         end)
     end)
+end)
+
+RegisterNetEvent('qb-delivery:server:CreateLobby')
+AddEventHandler('qb-delivery:server:CreateLobby', function(lobbyname)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local lobbyId = #lobbies + 1
+    lobbies[lobbyId] = {
+        id = lobbyId,
+        name = lobbyname,
+        players = {[src] = Player},
+        active = false
+    }
 end)

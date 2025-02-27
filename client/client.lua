@@ -262,9 +262,18 @@ end
 
 local function GetNearestPlayers()
   local Squad = {}
-  local playerPed = GetClosestPedToPlayer()
-  local nearestPlayerId = GetPlayerServerId(NetworkGetPlayerIndexFromPed(playerPed))
-  local nearestPlayerName = GetPlayerName(nearestPlayerId)
+  local nearestPlayer = GetClosestPedToPlayer()
+  local nearestPlayerId = GetPlayerServerId(NetworkGetPlayerIndexFromPed(nearestPlayer))
+  local nearestPlayerData = QBCore.Functions.GetPlayerData(nearestPlayerId)
+  local charName = nearestPlayerData.charinfo.firstname .. " " .. nearestPlayerData.charinfo.lastname
+
+  if nearestPlayerData and charName then
+    table.insert(Squad, {
+      id = nearestPlayerId,
+      name = charName,
+      distance = #(GetEntityCoords(PlayerPedId()) - GetEntityCoords(nearestPlayerData))
+    })
+  end
 
   return Squad
 end
@@ -377,8 +386,11 @@ RegisterNUICallback('connectedPlayers', function(data, cb)
   cb(playerStats)
 end)
 
-
-
+RegisterNetEvent('qb-delivery:client:CreateLobby')
+AddEventHandler('qb-delivery:client:CreateLobby', function(lobbyname)
+  
+  TriggerServerEvent('qb-delivery:client:CreateLobby', lobbyname)
+end)
 
 -- ========================= Show UI =========================
 RegisterCommand('show-nui', function()
