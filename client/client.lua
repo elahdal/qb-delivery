@@ -412,10 +412,10 @@ end)
 
 RegisterCommand('joinlobby', function(source, args)
   if #args < 1 then
-    QBCore.Functions.Notify('Please specify a lobby ID', 'error') 
+    QBCore.Functions.Notify('Please specify a lobby ID', 'error')
     return
   end
-  TriggerEvent('qb-delivery:client:JoinLobby', args[1])
+  TriggerServerEvent('qb-delivery:server:JoinLobby', args[1])
 end)
 
 RegisterCommand('leavelobby', function()

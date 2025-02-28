@@ -92,9 +92,13 @@ RegisterNetEvent('qb-delivery:server:JoinLobby')
 AddEventHandler('qb-delivery:server:JoinLobby', function(lobbyId)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if lobbies[lobbyId] then 
+    local name = Player
+    print("Join OUT")
+    if lobbies[lobbyId] then
         lobbies[lobbyId].players[src] = Player
         print("Welcome player to lobby named" ,lobbies[lobbyId].name, "players =" ,lobbies[lobbyId].players,"state : ",lobbies[lobbyId].active)
+    else
+        print("error join: lobby not found")
     end
 end)
 
@@ -104,7 +108,7 @@ AddEventHandler('qb-delivery:server:LeaveLobby', function()
     for lobbyId, lobbyBoucle in pairs(lobbies) do
         if lobbyBoucle.players[src] then
             lobbyBoucle.players[src] = nil
-            print("Joueur quitté du lobby ID:", lobbyId) 
+            print("Joueur quitté du lobby ID:", lobbyId)
             break
         end
     end
@@ -123,5 +127,8 @@ AddEventHandler('qb-delivery:server:dbug',function()
         print("dbug lobby ID:", lobbyId) 
         print("lobby name:", lobbyBoucle.name)
         print("lobby active:", lobbyBoucle.active)
+        for playerId, playerData in pairs(lobbyBoucle.players) do
+            print("player ", playerData.PlayerData.charinfo.firstname .. " " .. playerData.PlayerData.charinfo.lastname)
+        end
     end
 end)
