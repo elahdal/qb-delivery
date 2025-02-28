@@ -75,6 +75,8 @@ end)
 
 RegisterNetEvent('qb-delivery:server:CreateLobby')
 AddEventHandler('qb-delivery:server:CreateLobby', function(lobbyname)
+    print("Event dbug triggered S...")
+
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local lobbyId = #lobbies + 1
@@ -83,6 +85,7 @@ AddEventHandler('qb-delivery:server:CreateLobby', function(lobbyname)
         players = {[src] = Player},
         active = false
     }
+    print("Lobby Created succesfully!")
 end)
 
 RegisterNetEvent('qb-delivery:server:JoinLobby')
@@ -104,5 +107,21 @@ AddEventHandler('qb-delivery:server:LeaveLobby', function()
             print("Joueur quitté du lobby ID:", lobbyId) 
             break
         end
+    end
+end)
+
+RegisterNetEvent('qb-delivery:server:dbug')
+AddEventHandler('qb-delivery:server:dbug',function()
+    print("Start dbuggin S ...")
+    print("Number of lobbies:", #lobbies)
+    if next(lobbies) == nil then
+        print("Lobbies table is empty!")
+        return
+    end
+    for lobbyId, lobbyBoucle in pairs(lobbies) do
+        print("IN")
+        print("dbug lobby ID:", lobbyId) 
+        print("lobby name:", lobbyBoucle.name)
+        print("lobby active:", lobbyBoucle.active)
     end
 end)

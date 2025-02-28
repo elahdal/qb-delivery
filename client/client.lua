@@ -260,23 +260,23 @@ local function createDeliveryBlip(x, y, z, label, iconSprite)
   return blip
 end
 
-local function GetNearestPlayers()
-  local Squad = {}
-  local nearestPlayer = GetClosestPedToPlayer()
-  local nearestPlayerId = GetPlayerServerId(NetworkGetPlayerIndexFromPed(nearestPlayer))
-  local nearestPlayerData = QBCore.Functions.GetPlayerData(nearestPlayerId)
-  local charName = nearestPlayerData.charinfo.firstname .. " " .. nearestPlayerData.charinfo.lastname
+-- local function GetNearestPlayers()
+--   local Squad = {}
+--   local nearestPlayer = GetClosestPedToPlayer()
+--   local nearestPlayerId = GetPlayerServerId(NetworkGetPlayerIndexFromPed(nearestPlayer))
+--   local nearestPlayerData = QBCore.Functions.GetPlayerData(nearestPlayerId)
+--   local charName = nearestPlayerData.charinfo.firstname .. " " .. nearestPlayerData.charinfo.lastname
 
-  if nearestPlayerData and charName then
-    table.insert(Squad, {
-      id = nearestPlayerId,
-      name = charName,
-      distance = #(GetEntityCoords(PlayerPedId()) - GetEntityCoords(nearestPlayerData))
-    })
-  end
+--   if nearestPlayerData and charName then
+--     table.insert(Squad, {
+--       id = nearestPlayerId,
+--       name = charName,
+--       distance = #(GetEntityCoords(PlayerPedId()) - GetEntityCoords(nearestPlayerData))
+--     })
+--   end
 
-  return Squad
-end
+--   return Squad
+-- end
 
 local function test()
   local Player = QBCore.Functions.GetPlayerData()
@@ -383,12 +383,13 @@ RegisterNUICallback('connectedPlayers', function(data, cb)
 end)
 
 -- ========================= Lobby =========================
+-- Lobby events
 RegisterNetEvent('qb-delivery:client:CreateLobby')
 AddEventHandler('qb-delivery:client:CreateLobby', function(lobbyname)
   TriggerServerEvent('qb-delivery:client:CreateLobby', lobbyname)
 end)
 
-RegisterNetEvent('qb-delivery:client:JoinLobby')
+RegisterNetEvent('qb-delivery:client:JoinLobby') 
 AddEventHandler('qb-delivery:client:JoinLobby', function(lobbyId)
   TriggerServerEvent('qb-delivery:client:JoinLobby', lobbyId)
 end)
@@ -396,6 +397,35 @@ end)
 RegisterNetEvent('qb-delivery:client:LeaveLobby')
 AddEventHandler('qb-delivery:client:LeaveLobby', function()
   TriggerServerEvent('qb-delivery:client:LeaveLobby')
+end)
+
+-- Command handlers
+RegisterCommand('createlobby', function(source, args)
+  if #args < 1 then
+    QBCore.Functions.Notify('Please specify a lobby name', 'error')
+    return
+  end
+  TriggerServerEvent('qb-delivery:server:CreateLobby', args[1])
+  print("Event dbug triggered...")
+
+end)
+
+RegisterCommand('joinlobby', function(source, args)
+  if #args < 1 then
+    QBCore.Functions.Notify('Please specify a lobby ID', 'error') 
+    return
+  end
+  TriggerEvent('qb-delivery:client:JoinLobby', args[1])
+end)
+
+RegisterCommand('leavelobby', function()
+  TriggerEvent('qb-delivery:client:LeaveLobby')
+end)
+
+RegisterCommand('dbug', function()
+  print("Start dbuggin C ...")
+  TriggerServerEvent('qb-delivery:server:dbug')
+  print("Event dbug triggered...")
 end)
 
 
