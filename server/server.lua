@@ -71,8 +71,6 @@ AddEventHandler('qb-delivery:server:UpdateDB', function(bonus)
     end)
 end)
 
-
-
 RegisterNetEvent('qb-delivery:server:CreateLobby')
 AddEventHandler('qb-delivery:server:CreateLobby', function(lobbyname)
     print("Event dbug triggered S...")

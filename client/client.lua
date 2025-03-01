@@ -82,7 +82,7 @@ local function GetNearestAdress(dataAdress)
 
   -- Take only 10 random addresses (or all if fewer than 10)
   local selectedAddresses = {}
-  for i = 1, math.min(1, #allAddresses) do
+  for i = 1, math.min(2, #allAddresses) do
     table.insert(selectedAddresses, allAddresses[i])
   end
 
@@ -419,7 +419,7 @@ RegisterCommand('joinlobby', function(source, args)
 end)
 
 RegisterCommand('leavelobby', function()
-  TriggerEvent('qb-delivery:client:LeaveLobby')
+  TriggerServerEvent('qb-delivery:server:LeaveLobby')
 end)
 
 RegisterCommand('dbug', function()
@@ -427,9 +427,6 @@ RegisterCommand('dbug', function()
   TriggerServerEvent('qb-delivery:server:dbug')
   print("Event dbug triggered...")
 end)
-
-
-
 
 -- ========================= Show UI =========================
 RegisterCommand('show-nui', function()
@@ -450,8 +447,6 @@ RegisterNuiCallback('Start', function(data, cb)
   SpawnPedInVehicule()
   cb({})
 end)
-
-
 
 -- ========================== Ressources ==========================
 AddEventHandler('onResourceStart', function(resourceName)
